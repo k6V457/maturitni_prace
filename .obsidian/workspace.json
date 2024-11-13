@@ -11,8 +11,12 @@
             "id": "bf53f88db9ae541a",
             "type": "leaf",
             "state": {
-              "type": "empty",
-              "state": {}
+              "type": "markdown",
+              "state": {
+                "file": "obsidian/Práce/Úvod/Základní parametry.md",
+                "mode": "source",
+                "source": false
+              }
             }
           }
         ]
@@ -81,6 +85,7 @@
             "state": {
               "type": "backlink",
               "state": {
+                "file": "obsidian/Práce/Úvod/Základní parametry.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -97,6 +102,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
+                "file": "obsidian/Práce/Úvod/Základní parametry.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -118,7 +124,9 @@
             "type": "leaf",
             "state": {
               "type": "outline",
-              "state": {}
+              "state": {
+                "file": "obsidian/Práce/Úvod/Základní parametry.md"
+              }
             }
           }
         ]
@@ -138,8 +146,21 @@
       "command-palette:Open command palette": false
     }
   },
-  "active": "d1a0c5c1c0efb0eb",
+  "active": "bf53f88db9ae541a",
   "lastOpenFiles": [
-    "LICENSE"
+    "obsidian/Práce/Úvod/Cíle.md",
+    "obsidian/Práce/Úvod/Základní parametry.md",
+    "obsidian/Untitled 1.md",
+    "obsidian/Práce/Úvod",
+    "obsidian/Práce",
+    "obsidian/Elektronika/PCB-ROBOT.md",
+    "pcb/robot/fp-info-cachejP8z7e",
+    "pcb/robot/~robot.kicad_pcb.lck",
+    "pcb/robot/robot-backups/robot-2024-09-25_231853.zip",
+    "pcb/robot/robot-backups/robot-2024-09-25_230905.zip",
+    "pcb/robot/#auto_saved_files#",
+    "pcb/robot/_autosave-robot.kicad_sch",
+    "pcb/robot/~_autosave-robot.kicad_pcb.lck",
+    "pcb/robot/robot-backups/robot-2024-09-25_225304.zip"
   ]
 }

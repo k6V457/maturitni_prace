@@ -33,6 +33,9 @@ https://www.youtube.com/watch?v=mhmD-QA6kf0
 https://en.wikipedia.org/wiki/Kalman_filter
 [esp32 datasheet](https://www.espressif.com/sites/default/files/documentation/esp32-wroom-32_datasheet_en.pdf)
 
+
+# Baterie 
+https://www.omnitron.cz/_dokumenty/792019123600416/ncr-18650ga.pdf 10.10.2024
 [Kicad tutorial](https://www.youtube.com/watch?v=SFJRHFMOhQA)
 # Hominik Dubáček
 Jak zrobit pcb:

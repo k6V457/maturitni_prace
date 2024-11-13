@@ -578,6 +578,10 @@
     [
       "9447e125-dc0f-40be-afe0-569138d05ba1",
       "Root"
+    ],
+    [
+      "559884b0-efba-4454-a8cf-d53db3ec2475",
+      "PSU"
     ]
   ],
   "text_variables": {}

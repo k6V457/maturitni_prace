@@ -1,0 +1,1 @@
+Navrhnout a případně vytvořit malého samo balančního robota ovládaného pomocí ESP32
