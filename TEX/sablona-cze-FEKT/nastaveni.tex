@@ -10,6 +10,7 @@
   %english-slovak,	% originální jazyk je angličtina, překlad je slovensky
 %
 %%% Z následujících voleb typu práce lze použít pouze jednu
+  %graduation,    % maturitní práce (třeba zpracovat)
   semestral,		  % semestrální práce (výchozí)
   %bachelor,			%	bakalářská práce
   %master,			  % diplomová práce
@@ -30,10 +31,10 @@
 %%% Jméno a příjmení autora ve tvaru
 %  [tituly před jménem]{Křestní}{Příjmení}[tituly za jménem]
 % Pokud osoba nemá titul před/za jménem, smažte celý řetězec '[...]'
-\author[Bc.]{Křestní}{Příjmení}
+\author{Radek}{Jančička}
 
 %%% Identifikační číslo autora (VUT ID)
-\butid{007}
+\butid{010}
 
 %%% Pohlaví autora/autorky
 % (nepoužije se ve variantě english-czech ani english-slovak)
@@ -43,7 +44,7 @@
 %%% Jméno a příjmení vedoucího/školitele včetně titulů
 %  [tituly před jménem]{Křestní}{Příjmení}[tituly za jménem]
 % Pokud osoba nemá titul před/za jménem, smažte celý řetězec '[...]'
-\advisor[prof.\ Ing.]{Křestní}{Příjmení}[CSc.]
+\advisor[Ing.]{Martin}{Kijonka}[Phd.]
 
 %%% Jméno a příjmení oponenta včetně titulů
 %  [tituly před jménem]{Křestní}{Příjmení}[tituly za jménem]
@@ -52,7 +53,7 @@
 % v případě, že nechcete, aby se na titulním snímku prezentace zobrazoval oponent, pouze příkaz zakomentujte;
 % u obhajoby semestrální práce se oponent nezobrazuje (jelikož neexistuje)
 % U dizertační práce jsou typicky dva až tři oponenti. Pokud je chcete mít na titulním slajdu, prosím ručně odkomentujte a upravte jejich jména v definici "VUT title page" v souboru thesis.sty.
-\opponent[doc.\ Mgr.]{Křestní}{Příjmení}[Ph.D.]
+\opponent{Richard}{Jelen}
 
 %%% Název práce
 %  Parametr ve složených závorkách {} je název v originálním jazyce,
@@ -61,12 +62,12 @@
 %  \def\insertshorttitle{Zkác.\ náz.\ práce}
 %  kde jako parametr vyplníte zkrácený název. Pokud nechcete zkracovat název, budete muset předefinovat,
 %  jak se vytváří patička slidu. Viz odkaz: https://bit.ly/3EJTp5A
-\title[Title of Student's Thesis]{Název studentské práce}
+\title[Title of Student's Thesis]{Samobalanční robot}
 
 %%% Označení oboru studia
 %  Parametr ve složených závorkách {} je název oboru v originálním jazyce,
 %  parametr v hranatých závorkách [] je překlad
-\specialization[Teleinformatics]{Teleinformatika}
+\specialization[Electrotechnics and Mechatronics]{Elektrotechnika a Mechatronika}
 
 %%% Označení ústavu
 %  Parametr ve složených závorkách {} je název ústavu v originálním jazyce,
@@ -81,18 +82,18 @@
 %\department[Department of Microelectronics]{Ústav mikroelektroniky}
 %\department[Department of Radio Electronics]{Ústav radioelektroniky}
 %\department[Department of Theoretical and Experimental Electrical Engineering]{Ústav teoretické a experimentální elektrotechniky}
-\department[Department of Telecommunications]{Ústav telekomunikací}
+%\department[Department of Telecommunications]{Ústav telekomunikací}
 %\department[Department of Power Electrical and Electronic Engineering]{Ústav výkonové elektrotechniky a elektroniky}
 
 %%% Označení fakulty
 %  Parametr ve složených závorkách {} je název fakulty v originálním jazyce,
 %  parametr v hranatých závorkách [] je překlad
 %\faculty[Faculty of Architecture]{Fakulta architektury}
-\faculty[Faculty of Electrical Engineering and~Communication]{Fakulta elektrotechniky a~komunikačních technologií}
+%\faculty[Faculty of Electrical Engineering and~Communication]{Fakulta elektrotechniky a~komunikačních technologií}
 %\faculty[Faculty of Chemistry]{Fakulta chemická}
 %\faculty[Faculty of Information Technology]{Fakulta informačních technologií}
 %\faculty[Faculty of Business and Management]{Fakulta podnikatelská}
-%\faculty[Faculty of Civil Engineering]{Fakulta stavební}
+\faculty[Faculty of Civil Engineering]{Fakulta stavební}
 %\faculty[Faculty of Mechanical Engineering]{Fakulta strojního inženýrství}
 %\faculty[Faculty of Fine Arts]{Fakulta výtvarných umění}
 %
@@ -100,16 +101,16 @@
 \facultylogo[logo/FEKT_zkratka_barevne_PANTONE_CZ]{logo/UTKO_color_PANTONE_CZ}
 
 %%% Rok odevzdání práce
-\graduateyear{2030}
+\graduateyear{2025}
 %%% Akademický rok odevzdání práce
-\academicyear{2029/30}
+\academicyear{2024/25}
 
 %%% Datum obhajoby (uplatní se pouze v prezentaci k obhajobě)
 \date{11.\,11.\,1980} 
 
 %%% Místo obhajoby
 % Na titulních stránkách bude automaticky vysázeno VELKÝMI písmeny (pokud tyto stránky sází šablona)
-\city{Brno}
+\city{Karviná}
 
 %%% Abstrakt
 \abstract[%
@@ -129,7 +130,7 @@ Klíčová slova v~originálním jazyce
 
 %%% Poděkování
 \acknowledgement{%
-Rád bych poděkoval vedoucímu bakalářské/diplomové/disertační práce
-panu Ing.~XXX YYY, Ph.D.\ za odborné vedení,
-konzultace, trpělivost a~podnětné návrhy k~práci.
+Rád bych poděkoval vedoucímu maturitní práce Martinu Kijonkovi za odborné poradenství, Richardu Jelenovi za dokopávání k práci.
+ Dále bych chtěl poděkovat Střední průmyslové škole Karviná za zapůjčení vybavení pro tvorbu odborné práce.
+ Děkuji také Bc. Jakubu Chorvatovi za dodání motivace a za pomoc při programování ESP32 a návrhu PCB.
 }%
