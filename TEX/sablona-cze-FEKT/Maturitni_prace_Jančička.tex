@@ -68,7 +68,7 @@
     {ď}{{\v{d}}}1
     {é}{{\'e}}1
     {ě}{{\v{e}}}1
-    {í}{{\'i}}1
+    {í}{{\i'}}1
     {ň}{{\v{n}}}1
     {ó}{{\'o}}1
     {ř}{{\v{r}}}1
@@ -107,7 +107,7 @@
 %%%%%%     Nastavení polí ve Vlastnostech dokumentu PDF      %%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Při načteném balíčku 'hyperref' lze použít příkaz '\pdfsettings':
-\pdfsettings
+\pdfsettings%
 %  Nastavení polí je možné provést také ručně příkazem:
 %\hypersetup{
 %  pdftitle={Název studentské práce},    	% Pole 'Document Title'
@@ -117,7 +117,7 @@
 %}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\pdfmapfile{=vafle.map}
+\pdfmapfile{=vafle.map}%
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%       Začátek dokumentu               %%%%%%%%%%%%%%%%%%%%%
@@ -127,25 +127,25 @@
 
 %%% Vložení desek -- od září 2021 na žádost fakulty nepoužíváno
 %\includepdf[pages=1]%  buďto generovaných informačním systémem
-  %{pdf/student-desky}% název souboru nesmí obsahovat mezery!
+%{pdf/student-desky}% název souboru nesmí obsahovat mezery!
 %%% NEBO vytvoření desek z balíčku
-%%\makecover
+%\makecover
 %%%
 %\oddpage % při dvojstranném tisku přidá prázdnou stránku
 %% kazdopádně ale:
 %\setcounter{page}{1} %resetovaní čítače stránek -- desky do číslování nezahrnujeme
 
 %% Vložení titulního listu
-\includepdf[pages=1]%    buďto generovaného informačním systémem
-  {pdf/student-titulka}% název souboru nesmí obsahovat mezery!
+%\includepdf[pages=1]%    buďto generovaného informačním systémem
+%{pdf/student-titulka}% název souboru nesmí obsahovat mezery!
 %% NEBO vytvoření titulní stránky z balíčku
-%\maketitle
+%\maketitle%
 %%
-\oddpage  % při dvojstranném tisku se přidá prázdná stránka
-   
+\oddpage% při dvojstranném tisku se přidá prázdná stránka
+
 %% Vložení zadání
 \includepdf[pages=1]%   buďto generovaného informačním systémem
-  {pdf/student-zadani}% název souboru nesmí obsahovat mezery!
+{pdf/student-zadani}% název souboru nesmí obsahovat mezery!
 %% NEBO lze vytvořit prázdný list příkazem ze šablony
 %\patternpage{}%
 %	{\sffamily\Huge\centering ZDE VLOŽIT LIST ZADÁNÍ}%
@@ -154,7 +154,7 @@
 \oddpage% při dvojstranném tisku se přidá prázdná stránka
 
 %% Vysázení stránky s abstraktem
-\makeabstract
+\makeabstract%
 
 % Vysázení stránky s rozšířeným abstraktem
 % (pokud píšete práci v češtině či slovenštině, vložení rozšířeného abstraktu zrušte;
@@ -162,64 +162,58 @@
 \input{text/rozsireny_abstrakt}
 
 %%% Vysázení citace práce
-\makecitation
+%\makecitation%
 
 %%% Vysázení prohlášení o samostatnosti
-\makedeclaration
+%\makedeclaration%
 
 %%% Vysázení poděkování
-\makeacknowledgement
-
-%%% Vysázení obsahu
-\tableofcontents
 
 %%% Vysázení seznamu obrázků
 % (vynechejte, pokud máte dva nebo méně obrázků)
-\listoffigures
+\listoffigures%
 
 %%% Vysázení seznamu tabulek
 % (vynechejte, pokud máte dvě nebo méně tabulek)
-\listoftables
+\listoftables%
 
 %%% Vysázení seznamu výpisů kódu
 % (vynechejte, pokud máte dva nebo méně výpisů)
-\lstlistoflistings
+%\lstlistoflistings%
 
 \cleardoublepage\pagestyle{plain}   % zapnutí číslování stránek
 
+%%% Vložení souboru 'text/zkratky' se seznam použitých symbolů, veličin a zkratek
+\include{text/zkratky}%
+
 %Pro vkládání kapitol i příloh používejte raději \include než \input
 %%% Vložení souboru 'text/uvod.tex' s úvodem
-\include{text/uvod}
+\include{text/uvod}%
+\include{text/Seznam_Zkratek}%
 
 %%% Vložení souboru 'text/cile.tex' s úvodem
-\include{text/cile}
+\include{text/cile}%
 
-%%% Vložení souboru 'text/reseni' s popisem řešení práce
-% (rozdělte na více souborů či kapitol, pokud je vhodné)
-\include{text/reseni}
+\include{text/teoreticka_cast}%
 
-%%% Vložení souboru 'text/vysledky' s popisem vysledků práce
-% (rozdělte na více souborů či kapitol, pokud je vhodné)
-\include{text/vysledky}
+\include{text/prakticka_cast}%
 
-%%% Vložení souboru 'text/zaver' se závěrem
-\include{text/zaver}
+\include{text/vysledky}%
+
+\include{text/zaver}%
 
 %%% Vložení souboru 'text/literatura' se seznamem zdrojů
-\include{text/literatura}
-
-%%% Vložení souboru 'text/zkratky' se seznam použitých symbolů, veličin a zkratek
-\include{text/zkratky}
+\include{text/literatura}%
 
 %%% Začátek příloh
-\appendix
+\appendix%
 
 %%% Vysázení seznamu příloh
 % (vynechejte, pokud máte dvě nebo méně příloh)
-\listofappendices
+\listofappendices%
 
 %%% Vložení souboru 'text/prilohy' s přílohami
 % Obvykle je přítomen alespoň popis co najdeme na přiloženém médiu
-\include{text/prilohy}
+\include{text/prilohy}%
 
 \end{document}

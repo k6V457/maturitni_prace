@@ -1,0 +1,41 @@
+https://www.youtube.com/watch?v=TxpXRbWMges
+%Robot
+
+Zapojení na PCB
+
+ESP32 PINOUT
+
+
+Nákres v Xournalpp
+
+% Zapojení jednotlivých modulů%
+% CY-BMI160 akcelerometr%
+% https://www.youtube.com/watch?v=gSZC7x_uUz4%
+% https://how2electronics.com/esp32-with-bmi160-accelerometer-gyroscope-sensor/%
+
+% ESP32 má dvě SPI sběrnice. H_SPI a V_SPI. Obsahuje také třetí F_SPI, ale tu používá vnitřní flash pamět%
+
+
+\section{BMI160}
+
+ Data structure
+
+ has magnetometer
+
+ data:
+    raw.accx
+    raw.accy
+    raw.accz
+
+    raw.gyrx
+    raw.gyry
+    raw.gyrz
+
+    raw.magx
+    raw.magy
+    raw.magz
+
+    computed.anglex
+
+%   První návrh robota
+%   Výběr díllůhspi

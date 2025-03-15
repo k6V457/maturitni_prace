@@ -56,7 +56,7 @@
 %%%%%%     Nastavení polí ve Vlastnostech dokumentu PDF      %%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Při vloženém balíčku 'hyperref' lze použít příkaz '\pdfsettings'
-\pdfsettings
+\pdfsettings%
 %  Nastavení polí je možné provést také ručně příkazem:
 %\hypersetup{
 %  pdftitle={Název studentské práce},    	% Pole 'Document Title'
@@ -70,45 +70,45 @@
 \usetheme{VUT} 				% barvy a rozložení prezentace odpovídající VUT FEKT
 % alternativně lze použít jiná berevná témata, ale bez záruky. Například: 
 %\usetheme{Darmstadt} \usecolortheme{default2}
-\logoheader					% vytvoření zkráceného loga VUT FEKT v hlavičce slajdu, nechte odkomentované
+\logoheader%				% vytvoření zkráceného loga VUT FEKT v hlavičce slajdu, nechte odkomentované
 
 
 
 \begin{document}
 
 % v případě zakomentování následujícího se zobrazí v pravém dolním rohu slajdů klikatelné navigační symboly 
-\disablenavigationsymbols
+\disablenavigationsymbols%
 
 % titulní snímek, vysazen bez horních, dolních a postranních lišt (volba plain),
 % není tak vysazen ani nadpis snímku
-\maketitle
+\maketitle%
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % 1. snímek s cíli (zadaním) práce
-\begin{frame} 
+\begin{frame}
 	% nadpis snímku
 	\frametitle{Cíle práce}
 	\begin{itemize}
-			\item Nastudovat
-			\item Popsat
-				\begin{itemize}
-					\item nastudované
-				\end{itemize}
-			\item Implementovat
-				\begin{itemize}
-					\item nastudované
-					\item nové
-				\end{itemize}
-			\item Porovnat a vyhodnotit
-				\begin{itemize}
-						\item výsledky
-				\end{itemize}
+		\item Nastudovat
+		\item Popsat
+		      \begin{itemize}
+			      \item nastudované
+		      \end{itemize}
+		\item Implementovat
+		      \begin{itemize}
+			      \item nastudované
+			      \item nové
+		      \end{itemize}
+		\item Porovnat a vyhodnotit
+		      \begin{itemize}
+			      \item výsledek
+		      \end{itemize}
 	\end{itemize}
 \end{frame}
 
 
 %%%%%%%%%%%%%
-\begin{frame} 
+\begin{frame}
 	\frametitle{Klíčové nástroje}
 
 	% prostředí 'alertblock', které slouží pro zdůraznění informace
@@ -125,13 +125,13 @@
 		odkud vyplývá
 		$$\eul^{\jmag \uppi}+1=0.$$
 	\end{block}
-\end{frame} 
+\end{frame}
 
 
 %%%%%%%%%%%%%
-\begin{frame} 
+\begin{frame}
 	\frametitle{Plošný spoj}
-	
+
 	\begin{columns}[T] 								% prostředí sloupce s umístěním nahoře
 		\begin{column}{0.4\textwidth}		% první sloupec
 			Obrázek znázorňuje model:\\[2ex]
@@ -159,37 +159,37 @@
 
 
 %%%%%%%%%%%%%
-\begin{frame} 
+\begin{frame}
 	\frametitle{Výsledky}
 	\vspace{1cm}
 	\begin{table}[]
 		\centering
 		\caption{Výsledky měření mobilních sítí}
 		\label{tab:tabulka}
-			\begin{tabular}{lcc}
-				\toprule
-					Technologie  & Rychlost stahování [kB/s] & Rychlost nahrávání [kB/s] \\
-				\midrule
-					GPRS (2,5G)	& 7,2 	& 3,6\\
-					UMTS 3G     & 48 		& 48\\
-					HSPA (3,5G)	&	1\,706	&	720\\
-					LTE (4G) 		& 40\,750 & 10\,750\\
-				\bottomrule                                       
-			\end{tabular}
+		\begin{tabular}{lcc}
+			\toprule
+			Technologie & Rychlost stahování [kB/s] & Rychlost nahrávání [kB/s] \\
+			\midrule
+			GPRS (2,5G) & 7,2                       & 3,6                       \\
+			UMTS 3G     & 48                        & 48                        \\
+			HSPA (3,5G) & 1\,706                    & 720                       \\
+			LTE (4G)    & 40\,750                   & 10\,750                   \\
+			\bottomrule
+		\end{tabular}
 	\end{table}
 \end{frame}
 
 
 %%%%%%%%%%%%%
-\begin{frame} 
+\begin{frame}
 	\frametitle{Závěr}
 	\dots
 \end{frame}
 
 
 % podekovani
-\begin{frame}[c] 
-% bez nadpisu snímku
+\begin{frame}[c]
+	% bez nadpisu snímku
 	\frametitle{\mbox{ }}
 	\begin{center}
 		{\Huge Děkuji za pozornost!}
@@ -198,7 +198,7 @@
 
 % otázky oponenta
 \frame{
-\frametitle{Otázky oponenta}
+	\frametitle{Otázky oponenta}
 	\emph{Jaká je souvislost Vašeho vzorce (1.2) s~Maxwellovými rovnicemi v~integrálním tvaru?}\\[2ex]
 	%
 	Již staří Římané\,\dots
