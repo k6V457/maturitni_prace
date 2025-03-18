@@ -1,0 +1,47 @@
+\section{Výzkum}
+
+Tato kapitola se zabývá výzkumem problematiky týkající se samobalančních robotů.\\
+Co to vůbec ti samobalanční roboti jsou?\\
+Jedná se o typ robota fungující jako otočené kyvadlo. Zjednodušeně se skládá z osy rotace, která se nachází pod jeho těžištěm a 
+
+
+\subsection{Otočené pendulum}
+
+Otočené pendulum je nestabilní systém, který potřebuje aktivní řízení.
+Představte si jej jako misku, kterou otočíte vzhůru nohama a položte na ni kuličku.
+V jednom jediném bodě je kulička stabilní, ale když do ní jakkoliv šťouchnete, spadne.
+To samé plati i pro otočené kyvadlo, kterým je také tento robot.
+\newline
+
+Jak tento problém vyřešit? Co by se toereticky stalo, kdybychom začali touto miskou pohybovat, dokud bychom kuličku opět nedostali do stabilního bodu? O to stejné se pokouší také stabilizace robota. Podle dat naměřených akcelerometrem se tměří náklon, který se poté pohybem robota snaží snížit na nulu (nebo stabilní bod)
+\newline
+
+OBRÁZEK ENERGETICKÝCH HLADIN OTOČENÉHO PENDULA
+
+\subsection{metody řízení}
+Jaké tedy existují metody měření? Nejčastěji se používá kombinace Arduina, nebo podobného mikrokontroleru s akcelerometrem \ac{MPU6050}. Tato kombinace je jednoduchá pro realizaci díky široké dostupnosti knihoven pro kombinaci Arduino, \ac{MPU6050}. Není však ideální kvůli nízkému výkonu Arduina. Frekvence čipu arduina je $16MHz$. Pro srovnání, frekvence moderního procesoru v počítači je řádové v $GHz$.
+\newline
+
+Další rozšířenou alternativou je použití mikrokontroleru \ac{ESP32}. Tento mikrokontroler se dodává v několika variantách. Která z nich je však nejvhodnější?
+
+\subsection{výběr "balení" \ac{ESP32}}
+%Výběr formátu
+\ac{ESP32} se dá pořídit ve čtyřech verzích. První z nich je \ac{soc}. Je nejmenší, ale nejsložitější pro práci, jelokiž se jedná pouze o mikroprocesor. U některých verzí neobshuje dokonce ani \ac{flash} paměť. Bostrádá také napěťovou regulaci, ochranu vstupů či dokonce anténu, která je pro bezdrátovou komunikaci velmi důležitá.
+\newline
+% \includegraphics[options]{name}
+
+Přijatelnější verzí je \ac{ESP32} modul. Tento typ balení již obsahuje základní ochranu napájecích vstupů, oscilátor a některé verze dokonce anténu, nebo alespoň konektor pro anténu. Rozměry těchto modulů jsou většinou (19-40)x20mm.
+Tato verze obsahuje také paměť \ac{flash} či dokonce paměť \ac{psram}
+OBRÁZEK ESP MODULU
+\newline
+
+Předposledním způsobem balení je tzv \ac{devboard}. Ta obsahuje modul \ac{ESP32} s dalšími obvody, mezi kterými můžeme najít blink-diodu, USB převodník, či napěťový regulátor na 3V3.
+%výběr čipu
+TABULKA POROVNÁNÍ ESP32 ČIPŮ
+
+
+
+%%% Zdroje pod čarou 
+% espressif
+% random nerd tutorials
+% 
