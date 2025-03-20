@@ -12,7 +12,7 @@ Jedná se o typ mobilního robota, který pro udržení vzpřímené pozice pot�
 	\includegraphics[width=\textwidth]{Stabilita systému.png}
 	\caption{Stabilita systému}
 	\label{fig:stabilita systemu}
-	%Stabilita systému. Online. In: . Dostupné z: https://www.circuitbread.com/tutorials/the-concept-of-stability-3.1. [cit. -03-18].
+	\cite{stabilita_systemu}
 \end{figure}
 
 Představte si jej jako misku, kterou otočíte vzhůru nohama a položíte na ni kuličku. (Obrázek vpravo.)
@@ -36,7 +36,7 @@ Alternativou je použití mikrokontroleru \ac{ESP32}. Jeho až 2 240MHz jádra j
 	%By Arturo Urquizo - File:PID.svg, CC BY-SA 3.0, https://commons.wikimedia.org/w/index.php?curid=17633925
 \end{wrapfigure}
 
-Nejčastěji používaný algorytmus pro stabilizaci je \ac{pid}. Ten, jak název napovídá kombinuje 3 druhy odezvy. Proporcionální část reaguje na okamžitou změnu. Udává, o kolik se má systém pohnout v ideálním případě. Druhá část je intčegrační. Slouží k tomu, aby se systém nedostal do bodu, kdy se donekonečna přibližuje, ale nikdy se nedostane do požadované pozice. Integrační část tuto chybu sčítá a udává, o kolik se měl systém pohnout, ale nepohnul. Derivační část se snaží předpovědět, o kolik se ssystém pohne. Derivace sama o sobě udává rychlost změny. Kombinací a vylazením těchto tří složek dosáhneme téměř perfektní řídící smyčky.
+Nejčastěji používaný algoritmus pro stabilizaci je \ac{pid}. Ten, jak název napovídá kombinuje 3 druhy odezvy. Proporcionální část reaguje na okamžitou změnu. Udává, o kolik se má systém pohnout v ideálním případě. Druhá část je intčegrační. Slouží k tomu, aby se systém nedostal do bodu, kdy se donekonečna přibližuje, ale nikdy se nedostane do požadované pozice. Integrační část tuto chybu sčítá a udává, o kolik se měl systém pohnout, ale nepohnul. Derivační část se snaží předpovědět, o kolik se ssystém pohne. Derivace sama o sobě udává rychlost změny. Kombinací a vylazením těchto tří složek dosáhneme téměř perfektní řídící smyčky.
 Rovnice \ref{eq:PID equation} popisuje matematickou závislost mezi těmito třemi částmi.
 
 \begin{equation}\label{eq:PID equation}
@@ -268,7 +268,8 @@ Nevýhodami mohou být větší rozměry, z toho vyplývající vyšší hmotnos
 \newpage
 
 \subsection{\ac{dps}}
-Jaké jsou možnosti výroby \ac{dps}? Máme dva hlavní výrobce. JLCPCB a PCBWAY. Oba tito výrobci nabízí výrobu kvalitních \ac{dps}. Zároveň také nabízí akci. při výrobě 5 nebo 10 dvouvrstvých \ac{dps} o tlouště macimálně 1.6mm, vás vyjsou na 5\$ + doprava, což je velmi přijatelná cena.
+Jaké jsou možnosti výroby \ac{dps}? Máme dva hlavní výrobce. JLCPCB a PCBWAY. Oba tito výrobci nabízí výrobu kvalitních \ac{dps}. Zároveň také nabízí akci. při výrobě 5 nebo 10 dvouvrstvých \ac{dps} o tlouště maximálně 1.6mm, vás vyjsou na 5\$ + doprava, což je velmi přijatelná cena.
+\newline
 
 Tato kapitola se zabývala povrchovým výzkumem problematiky týkající se tvorby samobalančního robota. Hlubší detaily se dočtete v praktické části této práce.
 

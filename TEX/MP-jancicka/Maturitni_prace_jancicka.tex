@@ -11,8 +11,8 @@
 %  draft,    				  % Testovací překlad
   12pt,       				% Velikost základního písma je 12 bodů
   a4paper,    				% Formát papíru je A4
-  %oneside,      			% Jednostranný tisk
-  twoside,      			% Dvoustranný tisk (kapitoly a další důležité části tedy začínají na lichých stranách)
+  oneside,      			% Jednostranný tisk
+  %twoside,      			% Dvoustranný tisk (kapitoly a další důležité části tedy začínají na lichých stranách)
 	unicode,						% Záložky a metainformace ve výsledném  PDF budou v kódování unicode
 ]{report}				    	% Dokument třídy 'zpráva', vhodná pro sazbu závěrečných prací s kapitolami
 
@@ -141,7 +141,7 @@
 %%% NEBO vytvoření desek z balíčku
 \makecover%
 %%%
-\oddpage% při dvojstranném tisku přidá prázdnou stránku
+%\oddpage% při dvojstranném tisku přidá prázdnou stránku
 %% kazdopádně ale:
 
 %% Vložení titulního listu
@@ -152,8 +152,6 @@
 %% Vysázení stránky s abstraktem
 \makeabstract%
 %%
-\oddpage% při dvojstranném tisku se přidá prázdná stránka
-
 %% Vložení zadání
 \includepdf[pages=1,offset=7mm 0mm]%   buďto generovaného informačním systémem
 {pdf/student-zadani}% název souboru nesmí obsahovat mezery!
@@ -162,8 +160,7 @@
 %	{\sffamily\Huge\centering ZDE VLOŽIT LIST ZADÁNÍ}%
 %	{\sffamily\centering Z~důvodu správného číslování stránek}
 %%
-
-%\oddpage% při dvojstranném tisku se přidá prázdná stránka
+\oddpage% při dvojstranném tisku se přidá prázdná stránka
 
 %%% Vysázení citace práce
 \makecitation%

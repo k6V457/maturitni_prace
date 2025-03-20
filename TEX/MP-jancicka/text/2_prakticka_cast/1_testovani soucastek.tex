@@ -5,17 +5,56 @@ Kaapitola se zabývá testováním dílů. Bylo objednáno vícce druhů součst
 Pro napájení bylo koupeno několik step up modulů. J zapotřebí dostat se z napětí akumuátorů na stabilní hodnotu. Pro DC motory je tímto napětím 12V. Step uppy musí být schopny saturovat proudové požadavky motoru, které jsou podle výrobce až 0.7A. Pro jistotu byl tento parametr zvýšen na dojnásobek.
 Pro testování motorů bude použito následující schéma:
 \begin{figure}[htbp!]
-    \includegraphics[width = \textwidth]{Schema_testovani_stepup.png}
-    \label{fig:zapojeni pro testovani motoru}
-    \caption{Zapojení pro testování motorů}
-    \cite{}
+	\includegraphics[width = \textwidth]{Schema_testovani_stepup.png}
+	\label{fig:zapojeni pro testovani Step Up modulu}
+	\caption{Zapojení pro testování Step Up Modulu}
 \end{figure}
 
-$V_{in}$ byla hodnota mezi $2.5V$ a $5V$.
+$V_{in}$ byla hodnota mezi $2.5V$ a $5V$. \cite{18650_datasheet}
 Tyto hodnoty byly vybrány, jelikož jsou to hodnoty napětí téměř vybitého článku 18650. Při vstupním napětí 2.5V fungoval pouze jeden step up modul. Nedokázal však dosáhnout požadovaného výstupního proudu a celý průběh byl nestabilní. Navíc se zde objevovala spousta rušení.
 Pro napětí 5V vyhovovaly už dva zdroje. Jeden dosáhl proudu $1A$, než se začalo drasticky snižovat napětí na výstupu. Druhý modul dosáhnul výkonu $2A$.
+
 \subsection{Motory}
+Pro testování motorů bylo použito schéma téměř schodné se schématem pro testování zdrojů.
+\begin{figure}[htbp!]
+	\includegraphics[width = \textwidth]{Schema_testovani_motory.png}
+	\label{fig:zapojeni pro testovani motoru ze zdroje}
+	\caption{Zapojení pro testování motorů ze zdroje}
+\end{figure}
+
+Šlo hlavně o ozkoušení, že vybrané step up moduly budou fungovat s vybranými motory. Na motorech byla postupně zvyšována zátěž a pomocí osciloskopu se zapojenou referenční zemí bylo sledováno výstupní napětí a rušení.
+Celé měření poté bylo opakováno s nabitými články 18650. Nejprve s jedním, potom se dvěmi.
+
+
+Dále bylo zapotřebí ozkoušet, že hallovy sondy, sloužící jako rotační enkodér fungují u obou zakoupených motorů správně.
+
+\begin{figure}[htbp!]
+	\includegraphics[width = \textwidth]{Schema_testovani_hallovy_sondy.png}
+	\label{fig:zapojeni pro testovani hallovych sond}
+	\caption{Zapojení pro testování hallových sond}
+\end{figure}
+
+Vysvětlivky:\\
+$U_{cc1}=(0-12)V$\\
+$U_{cc2}=3.3V$\\
+$L_1$=výstup pro logický analyzátor (osciloskop propojený se zemí;0/3.3V)\\
+$L_2$=výstup pro logický analyzátor (osciloskop propojený se zemí;0/3.3V)\\
 
 \subsection{ESP32}
+Další důležitou podkapitolou je otestování, zda-li správně funguje programování ESP čipu. Pro tuto část nebyl použit ESP32 modul, ale celá vývojová deska. Je jednodušší na práci, má stejný pinout a nedávalo by tedy smysl používat ESP32 modul s breakout-board, čímž by se z ně stejně vývojová deska stala.
 
-\subsection{Testovací zdrojové kódy}
+\begin{figure}[htbp!]
+    \includegraphics[width=\textwidth]{Blokove_schema_breadboard.png}
+    \label{fig:blokove schema zapojeni esp32}
+    \caption{Blokové schéma zapojení ESP32}
+\end{figure}
+Každý blok byl samostatně vyzkoušen na nepájivém poli. Největší problém představoval akcelerometr a gyroskop BMI160, který je rychlejší a přesnější alternativou pro MPU6050. Nemá však tak širokou podporu tvůrců a nepodařilo se nalězt vhodnou funkční knihovnu pro tento modul.
+
+\begin{figure}[htbp!]
+    \includegraphics[width=\textwidth]{ESP32-microSD-Card-Wiring-Diagram.png}
+\label{fig:Zapojeni_SD_karty_s_ESP32}
+\caption{Zapojení SD karty s ESP32 vývojovou deskou}
+\cite{random_nerd_tutorials}
+\end{figure}
+Zapojení byla testována podle návodů na~webu randomnerdtutorials. \cite{random_nerd_tutorials}
+Takto byly otestovány všechny moduly zvlášť. Ovšem nastal problém. Jak připojit více $I^2C$ zařízení se stejnou adresou najednou. První možnost je použití $I^2C$ multiplexeru. Druhou možností je použití více $I^2C$ sběrnic. Kvůli zachování kompatibility s knihovnami byla zvolena možnost $I^2C$ multiplexování.

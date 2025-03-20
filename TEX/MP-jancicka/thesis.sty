@@ -1582,10 +1582,10 @@ a~som si plne vedom%
 
   \newpage
 
-  % \if@twoside
-  %   \thispagestyle{empty}%
-  %   \cleardoublepage
-  % \fi
+  \if@twoside
+    \thispagestyle{empty}%
+    \cleardoublepage
+  \fi
 
   \setcounter{page}{1}      %% Obalka se do poctu stran nepocita
 }%
@@ -1784,12 +1784,12 @@ a~som si plne vedom%
 
 \end{hyphenrules}
 
-  % \newpage
+  \newpage
 
-  % \if@twoside
-  %   \thispagestyle{empty}%
-  %   \cleardoublepage
-  % \fi
+  \if@twoside
+    \thispagestyle{empty}%
+    \cleardoublepage
+  \fi
 }%
 }%ifclassloaded
 
@@ -2141,4 +2141,5 @@ a~som si plne vedom%
 
 %%
 %%  End of file thesis.sty
+
 

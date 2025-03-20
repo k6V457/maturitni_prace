@@ -11,14 +11,9 @@ Na 3D tiskárně byla vytištěna plastová destička o rozměrech 100x100x1.6mm
 
 \textbf{Motory}
 U těch je hlavní točivý moment, který musí odpovívat rovnici\\
-\begin{figure}[htbp!]
-    \begin{equation}
-        F = m \cdot q \cdot l \cdot \sin \left( \theta \right) \cdot \frac{S}{2}
-    \end{equation}
-    \caption{}
-    \label{}
-    \cite{}
-\end{figure}
+\begin{equation}\label{eq:vypocet sily motoru}
+	F = m \cdot q \cdot l \cdot \sin \left( \theta \right) \cdot \frac{S}{2}
+\end{equation}
 \newline
 Význam proměnných:\\
 m = hmotnost\\
@@ -42,12 +37,12 @@ F vyšlo 0.2025N*m
 = 2.046kg*cm
 Tyto hodnoty byly velmi zvýšené.
 
-Safety factor stačí dva, 
+Safety factor stačí dva,
 
 Možná praktická část?
 
 \textbf{Baterie}
-Jeden člinek baterie 18650 má hmotnost okolo 
+Jeden člinek baterie 18650 má hmotnost okolo
 
 
 \textbf{Motory}
@@ -74,7 +69,7 @@ Možnost použití obou jader
 
 Hlavní funkce přiřadí operaci s tím, že jednomu jádru přiřadí pouze jednu funkci a druhému jádru přiřadí ostatní funkce. Nestane se tedy, že by byl přerušen hlavní loop starající se o balancování robota a robot spadnul. Zároveň se mohou vykonávat asynchronní operace jako komunikace s okolím, či logování dat na SD kartu.
 
-Základními 
+Základními
 
 $F=m\cdot l\cdot\sin\left[ \alpha \right] \cdot\frac{S}{2}$ [kg/cm]
 $m\cdot l\cdot q\cdot\sin\left(a\right)$ [Ncm]
