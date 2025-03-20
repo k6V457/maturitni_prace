@@ -1,12 +1,54 @@
 \section{Výběr programů}
+Tato kapitola se zabývá výběrem programů vhodných pro tvorbu této odborné práce. Veškeré programy by měly fungovat na operačním systému linux bez větších komplikací. Dále by měly být open-source, ideálně free software. Jelikož linux patří mezi POSIX compliant operační systémy (dalšími jsou např. UNIX, Mac OS, FreeBSD), měly by tyto programy také odpovídat normě POSIX.
+
+\textbf{Proč zrovna linux?}
+Windows nevyhovoval potřebám tét práce. Teoreticky by se dalo jej přimět spolupracovat, avšak téměř vše týkající se programování běží lépe na operačních systémech linux. Zároveň vám linux dá plnou kontrolu nad celým vašim systémem.
+
+\textbf{Co znamená open-source?}
+Open source znamená, že zdrojový kód programu je volně ke stažení na internetu a každý si jej může projít. Je tak zajištěno, že kód bude obsahovat minimum chyb, jelikož je každý může najít a nahlásit. Zároveň je docíleno vyšší bezpečnosti vašich dat, jelikož do otevřeného zdrojového k=odu nelze jen tak propašovat skripty které by mohly krást vaše data.
+
+Free software myšlenku otevřenosti posunuje ještě o stupěň výše, nejenom, že máte přístup ke zdrojovému k=odu, ale můžete jej také dle libosti modifikovat a šířit dále s tím, že opět zveřejníte zdrrojový k=od vaší úpravy.
 
 Tato sekce práce se zabývá výběrem programů potřebných pro tvorbu tištěných spojů, 3D modelů a práci s ESP32.
 
 \subsection{pro psaní práce}
+Psaní práce je možno dvěmi způsoby. Oba se od sebe značně liší
+První způsob je \ac{wysiwyg}. Tento způsob implementuje například \ac{word}. Tento velmii oblíbený produkt firmy Microsoft je výborný pro tvorbu kratších prací. Poslední dobou, zejména s příchodem webové verze upadá zejména kvůli špatné konzistenci. Navíc je placený.
+kromě \ac{word}u existují také jiné alternativy. Například Libre office. Ten však používá zastarejší design a funkce.
+Ve \ac{wysiwyg} editorech se poměrně špatně píšou složité matematické funkce, anebo stejně ve větší či menší míře používají typovací jazyk \LaTeX.
 
-Psaní práce je možno dvěmi způsoby.
-\newline
-PŘÍSPĚVKOVÁ ORGANIZACE
-\subsection{\acs{DPS}}
+
+\ac{wysiwym} je druhý způsob pro psaní odborné práce.
+Nevidíte sice jak bude vinální dokument vypadat než jej zkompilujete.
+Zaručí vám však mnohem lepší konzistenci.
+Křivka učení může být poněkud strmá a pokud píšete pouze krátkou práci, nebo nějakou slohovou práci do školy, tak se nevyplatí.
+Pro delší práce již však pozitiva převažují negativa a se zvyšující se délkou práce se tato mezera pouze prohlubuje.
+\LaTeX umožňuje rozdělení práce do více souborů, které se následně samy poskládají do jednoho výsledného souboru PDF.
+
+Pro tuto práci byl zvolen způsob \ac{wysiwym} s prostředím \LaTeX právě díky značně lepší konzistenci a jednoduššímu zapisování rovnic.
+
+Editor pro tuto práci byl zvolen \ac{Code} v kombinaci s LatexStudio.
+
+Pro kreslení schémat rukou byl zvolen prgram Xournal++. Tento program je určen provotně pro anotaci souborů PDF, ale pro účel náčrtů funguje skvěle.
+
+\subsection{Modely a Tisk}
+
+Pro tvorbu 3D modelů byl zvolen program FreeCAD. Ač s ním má spousta lidí problém, je zdarma, funguje a je POSIX compliant. Pro účely této práce je více, než dostačující.
+
+Pro \ac{slice} byl zvolen program PrusaSlicer a to hlavně díky skvělé podpoře komunity a všech možných tiskáren. Zároveň podporuje firmware Klipper, Octoprint a před tiskem nemusíte stahovat soubory na SD kartu, či flash disk, ale stačí pouze poslat Gcode do tiskárny, klidně bezdrátově, a zmáčknout tisk!
+\subsection{\acs{dps}}
+
+Pro návrh \ac{dps}, který začíná u schématu a končí u GERBER souborů, byl zvolen program KiCAD. Tento program je velmi rozšířen v profesionálním odvětví. Je podporován CERNem a obsahuje rozsáhlou knihovnu symbolů, footprintů a mnoho nádstaveb (addon).
+
+Pro případné ozkoušení funkčnosti některých jednoduchých obvodů simulací byl použit program SimulIDE.
 
 \subsection{programování}
+
+90 \% veškerého programování bylo prováděno v editoru \ac{Code}.
+Obrovskou výdodou je možnost instalování rozšíření a nastavení si všeho k obrazu svému. 
+alší výhodou je možnost nastavení profilů. Můžete si vytvořit profil pro práci s \LaTeX, pro práce v PlatformIO, či ESP IDF.
+Poté mezi nimi můžete přepínat podle toho, co zrovna tvoříte.
+
+Pro tvorbu kódu pro \ac{ESP32} byl použit framework Arduino i ESP-IDF. Oba mají své výhody i nevýhody. Výhody Arduina jsou: jednoduchost, podpora komunitou a možnost využívat příkazy ESP-IDF. Nevýhodou je, že ne všechny knihovny podporují Arduino a tento framework není určen pro tvorbu rozsáhlých projektů.
+
+ESP-IDF vyvíjí přímo firma Espressif vyrábějící mikroprocesory ESP32. Kompatibilita je zde tedy zaručena.S

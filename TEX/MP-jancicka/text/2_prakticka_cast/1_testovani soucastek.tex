@@ -1,0 +1,21 @@
+\section{Testování dílů}
+Kaapitola se zabývá testováním dílů. Bylo objednáno vícce druhů součstek a nyní je na čase vybrat nejlépe vyhovující z nich.
+
+\subsection{napájení}
+Pro napájení bylo koupeno několik step up modulů. J zapotřebí dostat se z napětí akumuátorů na stabilní hodnotu. Pro DC motory je tímto napětím 12V. Step uppy musí být schopny saturovat proudové požadavky motoru, které jsou podle výrobce až 0.7A. Pro jistotu byl tento parametr zvýšen na dojnásobek.
+Pro testování motorů bude použito následující schéma:
+\begin{figure}[htbp!]
+    \includegraphics[width = \textwidth]{Schema_testovani_stepup.png}
+    \label{fig:zapojeni pro testovani motoru}
+    \caption{Zapojení pro testování motorů}
+    \cite{}
+\end{figure}
+
+$V_{in}$ byla hodnota mezi $2.5V$ a $5V$.
+Tyto hodnoty byly vybrány, jelikož jsou to hodnoty napětí téměř vybitého článku 18650. Při vstupním napětí 2.5V fungoval pouze jeden step up modul. Nedokázal však dosáhnout požadovaného výstupního proudu a celý průběh byl nestabilní. Navíc se zde objevovala spousta rušení.
+Pro napětí 5V vyhovovaly už dva zdroje. Jeden dosáhl proudu $1A$, než se začalo drasticky snižovat napětí na výstupu. Druhý modul dosáhnul výkonu $2A$.
+\subsection{Motory}
+
+\subsection{ESP32}
+
+\subsection{Testovací zdrojové kódy}

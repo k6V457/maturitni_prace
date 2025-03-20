@@ -25,6 +25,9 @@
 
 \usepackage{graphicx} % Balíček 'graphicx' pro vkládání obrázků
 											% Nutné pro vložení logotypů školy a fakulty
+\graphicspath{{./obrazky}}
+           
+\usepackage{wrapfig}
 
 \usepackage[          % Balíček 'acronym' pro sazby zkratek a symbolů
 	nohyperlinks				% Nebudou tvořeny hypertextové odkazy do seznamu zkratek
@@ -140,7 +143,6 @@
 %%%
 \oddpage% při dvojstranném tisku přidá prázdnou stránku
 %% kazdopádně ale:
-\setcounter{page}{1} %resetovaní čítače stránek -- desky do číslování nezahrnujeme
 
 %% Vložení titulního listu
 %\includepdf[pages=1]%    buďto generovaného informačním systémem
@@ -188,6 +190,7 @@
 \lstlistoflistings%
 
 \cleardoublepage\pagestyle{plain}% zapnutí číslování stránek
+\setcounter{page}{1} %resetovaní čítače stránek -- desky do číslování nezahrnujeme
 
 %Pro vkládání kapitol i příloh používejte raději \include než \input
 %%% Vložení souboru 'text/uvod.tex' s úvodem
@@ -199,14 +202,18 @@
 \include{text/1_teoreticka_cast/0_teoreticka_cast}
 \include{text/1_teoreticka_cast/1_vyzkum}
 \include{text/1_teoreticka_cast/2_programy}
-\include{text/1_teoreticka_cast/3_zakladni_parametry}
+\include{text/1_teoreticka_cast/3_pomucky}
+\include{text/1_teoreticka_cast/4_zakladni_parametry}
 
 
 
 \include{text/2_prakticka_cast/0_prakticka_cast}
-\include{text/2_prakticka_cast/1_modely}
-\include{text/2_prakticka_cast/2_PCB}
-\include{text/2_prakticka_cast/3_program}
+\include{text/2_prakticka_cast/1_testovani soucastek}
+\include{text/2_prakticka_cast/2_modely}
+\include{text/2_prakticka_cast/3_PCB}
+\include{text/2_prakticka_cast/4_zjednodusene_schema}
+\include{text/2_prakticka_cast/5_rozmisteni_dps}
+\include{text/2_prakticka_cast/6_program}
 
 %%% Vložení souboru 'text/zaver' se závěrem
 \include{text/zaver}

@@ -1,43 +1,112 @@
 \section{Výzkum}
 
-Tato kapitola se zabývá výzkumem problematiky týkající se samobalančních robotů.\\
-Co to vůbec ti samobalanční roboti jsou?\\
-Jedná se o typ robota fungující jako otočené kyvadlo. Zjednodušeně se skládá z osy rotace, která se nachází pod jeho těžištěm a 
+Tato kapitola se zabývá výzkumem problematiky týkající se samobalančních robotů.
+Podkapitoly se zabývají vysvětlením, co to vůbec samobalanční robot je. Dále se zde dočtete o metodě PID. Dozvíte se, jaké existují druhy motorů pro použití v robotice a jaké jsou jejich rozdíly. Následně se dozvíte o rozdílech mezi produkty espressif, konkrétně o zbůsobu balení čipů. Poslední podkapitola se zabývá výběrem vhodného druhu akumulátorů. Na konci si vše shrneme.
 
+\subsection{Co je samobalanční robot?}
 
-\subsection{Otočené pendulum}
+Jedná se o typ mobilního robota, který pro udržení vzpřímené pozice potřebuje neustálou stabilizaci. Jedná se o dvoukolový systém, který je přirozeně nestabilní, respektive stabilní pouze v poloze s nejvyšším množstvím potenciální energie. Při jakémkoliv vychýlení z tohoto bodu se do něj nevrátí, ale vzdaluje se od něj.
 
-Otočené pendulum je nestabilní systém, který potřebuje aktivní řízení.
-Představte si jej jako misku, kterou otočíte vzhůru nohama a položte na ni kuličku.
+\begin{figure}[htbp!]
+	\centering
+	\includegraphics[width=\textwidth]{Stabilita systému.png}
+	\caption{Stabilita systému}
+	\label{fig:stabilita systemu}
+	%Stabilita systému. Online. In: . Dostupné z: https://www.circuitbread.com/tutorials/the-concept-of-stability-3.1. [cit. -03-18].
+\end{figure}
+
+Představte si jej jako misku, kterou otočíte vzhůru nohama a položíte na ni kuličku. (Obrázek vpravo.)
 V jednom jediném bodě je kulička stabilní, ale když do ní jakkoliv šťouchnete, spadne.
 To samé plati i pro otočené kyvadlo, kterým je také tento robot.
-\newline
 
-Jak tento problém vyřešit? Co by se toereticky stalo, kdybychom začali touto miskou pohybovat, dokud bychom kuličku opět nedostali do stabilního bodu? O to stejné se pokouší také stabilizace robota. Podle dat naměřených akcelerometrem se tměří náklon, který se poté pohybem robota snaží snížit na nulu (nebo stabilní bod)
-\newline
+Jak tento problém vyřešit? Co by se toereticky stalo, kdybychom začali touto miskou pohybovat, dokud bychom kuličku opět nedostali do stabilního bodu? O to stejné se pokouší stabilizace robota. Podle dat naměřených akcelerometrem se měří náklon, který mikrokontroler vyhodnocuje a říká motorům jak se mají pohnout tak, aby se úhel robot dostal zpět do stabilního bodu, nebo alespoň co nejblíže.
 
-OBRÁZEK ENERGETICKÝCH HLADIN OTOČENÉHO PENDULA
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
 
 \subsection{metody řízení}
-Jaké tedy existují metody měření? Nejčastěji se používá kombinace Arduina, nebo podobného mikrokontroleru s akcelerometrem \ac{MPU6050}. Tato kombinace je jednoduchá pro realizaci díky široké dostupnosti knihoven pro kombinaci Arduino, \ac{MPU6050}. Není však ideální kvůli nízkému výkonu Arduina. Frekvence čipu arduina je $16MHz$. Pro srovnání, frekvence moderního procesoru v počítači je řádové v $GHz$.
-\newline
+Jaké tedy existují metody řízení? Nejčastěji se používá kombinace Arduina, nebo podobného mikrokontroleru s akcelerometrem \ac{MPU6050}. Tato kombinace je jednoduchá pro realizaci díky široké dostupnosti knihoven pro kombinaci Arduino, \ac{MPU6050}. Není však ideální kvůli nízkému výkonu Arduina. Frekvence čipu arduina je $16MHz$. Pro srovnání, frekvence moderního procesoru v počítači je řádové v $GHz$. Když mikrokontroler nestíhá vyhodnocovat změny a stabilizovat robota, celý se poté začne třepat a musí dělat větší úpravy pohybu pro jeho stabilizaci.
+Alternativou je použití mikrokontroleru \ac{ESP32}. Jeho až 2 240MHz jádra jsou více než schopná provádět veškeré výpočty s požadovanou frekvencí.
 
-Další rozšířenou alternativou je použití mikrokontroleru \ac{ESP32}. Tento mikrokontroler se dodává v několika variantách. Která z nich je však nejvhodnější?
+\begin{wrapfigure}{r}{0.5\textwidth}
+	\includegraphics[width=0.5\textwidth]{PID loop.png}
+	\caption{PID řídící smyčka}
+	\label{fig:PID loop schematics}
+	\cite{}
+	%By Arturo Urquizo - File:PID.svg, CC BY-SA 3.0, https://commons.wikimedia.org/w/index.php?curid=17633925
+\end{wrapfigure}
+
+Nejčastěji používaný algorytmus pro stabilizaci je \ac{pid}. Ten, jak název napovídá kombinuje 3 druhy odezvy. Proporcionální část reaguje na okamžitou změnu. Udává, o kolik se má systém pohnout v ideálním případě. Druhá část je intčegrační. Slouží k tomu, aby se systém nedostal do bodu, kdy se donekonečna přibližuje, ale nikdy se nedostane do požadované pozice. Integrační část tuto chybu sčítá a udává, o kolik se měl systém pohnout, ale nepohnul. Derivační část se snaží předpovědět, o kolik se ssystém pohne. Derivace sama o sobě udává rychlost změny. Kombinací a vylazením těchto tří složek dosáhneme téměř perfektní řídící smyčky.
+Rovnice \ref{eq:PID equation} popisuje matematickou závislost mezi těmito třemi částmi.
+
+\begin{equation}\label{eq:PID equation}
+	u(t) = K_p e(t) + K_i \int e(t) dt + K_d \frac{de}{dt}
+\end{equation}
+%\cite{}
+% https://en.wikipedia.org/wiki/Proportional%E2%80%93integral%E2%80%93derivative_controller
+
+
+Význam proměnných rovnice \ref{eq:PID equation}:\\
+$u(t)$ = \ac{pid} kontrolní proměnná\\
+$K_p$ = proporcionální zvětšení\\
+$k_i$ = integrační zvětšení\\
+$k_d$ = derivační zvětšení\\
+$e(t)$ = velikost chyby\\
+$de$ = změna chybové hodnoty\\
+$dt$ = prodleva mezi měřeními
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newpage
 
 \subsection{výběr "balení" \ac{ESP32}}
 %Výběr formátu
-\ac{ESP32} se dá pořídit ve čtyřech verzích. První z nich je \ac{soc}. Je nejmenší, ale nejsložitější pro práci, jelokiž se jedná pouze o mikroprocesor. U některých verzí neobshuje dokonce ani \ac{flash} paměť. Bostrádá také napěťovou regulaci, ochranu vstupů či dokonce anténu, která je pro bezdrátovou komunikaci velmi důležitá.
+\begin{wrapfigure}{r}{0.3\textwidth}
+	\centering
+	\includegraphics[width=0.3\textwidth]{ESP32_SOC.png}
+	%ESP32 SOC. Online. In: . Dostupné z: https://products.espressif.com/api/user/product/description/param?picture=57. [cit. 2025-03-18].
+	\caption{ESP32-S3 SOC}
+	\label{fig:ESP32-S3 SOC}
+	\cite{}
+\end{wrapfigure}
+\ac{ESP32} se dá pořídit ve čtyřech verzích. \\
+První z nich je \ac{soc}. Je nejmenší, zato nejsložitější pro práci.
+Jedná se pouze o mikroprocesor, v některých případech neobshuje dokonce ani \ac{flash} paměť.
+Postrádá také napěťovou regulaci, ochranu vstupů či dokonce anténu, která je pro bezdrátovou komunikaci velmi důležitá.
+Piny tohoto typu balení se nacházejí vespod a velmi blízko u sebe. Je tedy poměrně problém napájet tento čip bezpečně a bez zkratů.
+Jelikož čipy ESP32 neobsahují anténu, nemohou ji mít ani certifikovanou a certifikace antén je poměrně zdlouhavý a nákladný proces. Proto existují ESP32 Moduly.
 \newline
-% \includegraphics[options]{name}
 
-Přijatelnější verzí je \ac{ESP32} modul. Tento typ balení již obsahuje základní ochranu napájecích vstupů, oscilátor a některé verze dokonce anténu, nebo alespoň konektor pro anténu. Rozměry těchto modulů jsou většinou (19-40)x20mm.
-Tato verze obsahuje také paměť \ac{flash} či dokonce paměť \ac{psram}
-OBRÁZEK ESP MODULU
+\begin{wrapfigure}{r}{0.3\textwidth}
+	\centering
+	\includegraphics[width=0.3\textwidth]{ESP32_module.png}
+	%ESP32 Modul. Online. In: . Dostupné z: https://products.espressif.com/api/user/product/description/param?picture=23. [cit. 2025-03-18].
+	\caption{ESP32 WROOM Modul}
+	\label{fig:ESP32 WROOM Modul}
+\end{wrapfigure}
+\ac{ESP32} moduly již obsahují základní ochranu napájecích vstupů, malý filtrační kondenzátor (pro vysoké kmitočty), oscilátor a některé verze dokonce anténu, anebo alespoň konektor pro anténu.
+Tyto antény jsou již certifikovány, nemusíte tedy tento proces podstupovat znovu a mnoohdy na tom výrobce, oproti \ac{ESP32} čipu mnohonásobně ušeřtí.
+Rozměry těchto modulů jsou okolo 18x25mm, což pro aplikaci samobalančního robota není sice zanedbatelné místo, ale pro účely této práce bohatě postačí.
+Tento typ balení obsahuje paměť \ac{flash}, občas dokonce paměť \ac{psram}.
 \newline
 
-Předposledním způsobem balení je tzv \ac{devboard}. Ta obsahuje modul \ac{ESP32} s dalšími obvody, mezi kterými můžeme najít blink-diodu, USB převodník, či napěťový regulátor na 3V3.
-%výběr čipu
-TABULKA POROVNÁNÍ ESP32 ČIPŮ
+\begin{wrapfigure}{r}{0.3\textwidth}
+	\centering
+	\includegraphics[width=0.3\textwidth]{ESP32_devkit.png}
+	%ESP32 devkit. Online. In: . Dostupné z: https://www.espressif.com/sites/default/files/dev-board/ESP32-DevKitC_L_0.png. [cit. 2025-03-18].
+	\caption{ESP32 DevKitC}
+	\label{fig:ESP3 DevKitC}
+\end{wrapfigure}
+Modulů jsou tři hlavní řady. WROOM, WROVER a PICO.\\
+PICO jak již název napovidá je nejmenší, bohužel stejně jako \ac{soc} se všechny piny nachází ze spodní strany čipu.
+Je tedy velmi obtížné kontrolovat kvalitu připájení.\\
+WROWER je největší. Piny jsou po bocích.
+Dá se napájet i hrotovou páječkou. Šířkou odpovídá modulu WROOM, ale je o něco málo delší.\\
+Modul WROOM je kombinací obou předchozích modulů. Piny se nenachází pod modulem, jak je tomu u modulu PICO, ale po stranách. Na rozdíl od modulu WROVER se nachází na třech stranách. Tímpádem může být tento modul kratší. Stejně jako u modulu WROVER lze napájet hrotovou páječkou. Modul WOOM můžete vidět na obrázku \ref{fig:ESP32 WROOM Modul}.\\
+
+Předposledním způsobem balení je tzv \ac{devboard}. Ta obsahuje modul \ac{ESP32} s dalšími obvody, mezi kterými můžeme najít blink-diodu, USB převodník, či napěťový regulátor na 3V3. Tento typ balení slouží pro vývoj aplikací. Jelikož se na této desce nachází vše co potřebujete a vám stačí ji pouze připojit do počítače a můžete se ponořit do světa ESP32. ESP vývojovou desku si můžete prohlédnout na obrázku \ref{fig:ESP3 DevKitC}.\\
+
+Poslední způsob balení ESP32 čipu je již implementace do koncového zařízení. ESP32 je díky možnosti bezdrátového připojení velmi rozšířenou volbou v oblasti IOT. ESP32 můžeme nalézt ve všemožných spotřebičích od chytrých vypínačů, žárovek, či dokonce chytré lampy. Tato práce bude také spadat do kategorie koncových zařízení. 
+
 
 
 
@@ -45,3 +114,162 @@ TABULKA POROVNÁNÍ ESP32 ČIPŮ
 % espressif
 % random nerd tutorials
 % 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\subsection{Motory}
+
+\begin{wrapfigure}{r}{0.2\textwidth}
+	\centering
+	\includegraphics[width=0.2\textwidth]{placeholder.png}
+	%ESP32 SOC. Online. In: . Dostupné z: https://products.espressif.com/api/user/product/description/param?picture=57. [cit. 2025-03-18].
+	\caption{DC motor}
+	\label{fig:DC motor}
+	\cite{}
+\end{wrapfigure}
+\textbf{DC motory} Nejjednoduššími motory jsou DC. Mají skvělý poměr velikosti, hmotnosti a výkonu. Dají se ovládat změnou napětí. Neovládají se však lineárně, ale kvadraticky. Při dvojnásobném zvýšení napětí se čtyřikrát zvýší výkon.
+\begin{equation}\label{eq:dependence of power on voltage, DC motor}
+	P = c \cdot U^2
+\end{equation}
+Jaké lze pro pohon robota použít motory?
+Opět bych je rozdělil na čtyři typy.
+DC, Servo, Stepper a BLDC
+Jaké jsou jejich jednotlivé výhody a nevýhody?
+\newline
+
+Další nevýhodou je nemožnost zjistit natočení bez externího sensoru, Rotačního enkodéru. Některé DC motory mají tento typ enkodéru již zabudovaný. Můžeme motor ovládat pomocí uzavřené smyčky se spětnou vazbou.
+
+Točivý moment těchto motorů nebývá zpravidla nejvyšší a rychlost otáčení dosahuje k 20000 otáčkám za minutu. Bývají proto velmi často zpřevodovány do síly. (Sníží se výstupní rychlost otáčení)
+\newline
+
+\begin{wrapfigure}{r}{0.2\textwidth}
+	\centering
+	\includegraphics[width=0.2\textwidth]{placeholder.png}
+	%ESP32 SOC. Online. In: . Dostupné z: https://products.espressif.com/api/user/product/description/param?picture=57. [cit. 2025-03-18].
+	\caption{Servo motor}
+	\label{fig:Servo motor}
+	\cite{}
+\end{wrapfigure}
+\textbf{Servo motory} Servo motory jsou dvojího druhu. S možností nastavení úhlu pouze ve velmi omezeném rozsahu, zpravidla to bývá 270 \textdegree.
+Druhou variantou jsou motory s aktivní regulací rychlosti otáčení. Chovají se podobně jako \ac{dc} motory, avšak jejich výkon je lineární.
+Pro ovládání již nestačí pouze měnit napětí, musíme použít precizní PWM signál.
+Stejně jako u DC motorů nedokážeme precizně určit otočení motoru bez použití externího čidla. Nebyly nalezeny žádné motory, jež by takovéto čidlo měly již zabudované.
+\newline
+
+\begin{wrapfigure}{r}{0.2\textwidth}
+	\centering
+	\includegraphics[width=0.2\textwidth]{placeholder.png}
+	%ESP32 SOC. Online. In: . Dostupné z: https://products.espressif.com/api/user/product/description/param?picture=57. [cit. 2025-03-18].
+	\caption{Stepper motor}
+	\label{fig:Stepper motor}
+	\cite{}
+\end{wrapfigure}
+\textbf{Stepper motory}
+Stepper motory jsou typ synchronní motory s velmi precizním krokem (step). Jsou řízeny signálem o diskrétních hladinách. Bývají často používány v CNC strojích. Tento typ motoru má relativně dobrý točivý moment i rychlost otáčení. Je však ke svému výkonu těžký a velký.
+Při přetížení tyto motory začnou přeskakovat a mohou se tak zničit.
+Zároveň má obrovskou spotřebu a potřebuje externí driver.
+Tento driver se většinou ovládá pomocí sériové komunikace UART, IIC, nebo u nejvýkonějších SPI, popřípadě v průmyslu používanou sběrnicí CAN.
+
+\begin{wrapfigure}{r}{0.2\textwidth}
+	\centering
+	\includegraphics[width=0.2\textwidth]{placeholder.png}
+	%ESP32 SOC. Online. In: . Dostupné z: https://products.espressif.com/api/user/product/description/param?picture=57. [cit. 2025-03-18].
+	\caption{BLDC motor}
+	\label{fig:BLDC motor}
+	\cite{}
+\end{wrapfigure}
+\textbf{BLDC motory}
+\ac{bldc} motory jsou synchronní motory, stejně jako steppery. Na rozdíl od nich se nepohybují po krocích, ale plynule. Řídí se plynulým, téměř sinusovým signálem. Stejně jako synchronní motory se musí rozbíhat plynule. Při přetížení mohou začít přeskakovat a může dojít i ke zničení.
+Pro ovládání se používají drivery. Tyto drivery mohou být programovány pomocí sériové komunikace. U těchto motorů lze řídit nejenom rychlost, ale také točivý moment, či přesně regulovat počet otočení. Jsou to nejlepší motory pro robotiku. Jedonou nevýhodou je cena řádové převyšující osstatní řešení.
+
+Nakonec byly zvoleny DC motory s hallovým senzorem pro jejich snadné ovládání, houževnatost možnost přesné regulace počtu otočení a nízké ceny.
+
+\subsection{Možnosti napájení}
+\begin{wrapfigure}{r}{0.2\textwidth}
+	\centering
+	\includegraphics[width=0.2\textwidth]{placeholder.png}
+	%ESP32 SOC. Online. In: . Dostupné z: https://products.espressif.com/api/user/product/description/param?picture=57. [cit. 2025-03-18].
+	\caption{Li-Po}
+	\label{fig:Li-Po}
+	\cite{}
+\end{wrapfigure}
+Napájení robota musí být přenosné. Nemůže tedy být připojen do zásuvky, nebo nějaké nabíječky. Je nutno použít akumulátory.
+Jaké máme druhy akumulátorů? Bylo uvažováno pouze nad dvěmi typy. \ac{lipo} a \ac{lion}.
+\newline
+
+\textbf{\ac{lipo}} akumulátory jsou levné, mají vysokou kapacitu, obrovské vybíjecí proudy (klidně 200A) a jsou skladné. Mají však jeden velmi nepříjemný zádrhel. Při nesprávném zacházení rády explodují. Musí proto být striktně dodrženy macimální hodnoty uváděné výrobcem a hlavně musí být nabíjeny kvalitní nabíječkou. Ničim takovým bohužel nedisponuji.
+\newline
+
+\begin{wrapfigure}{r}{0.2\textwidth}
+	\centering
+	\includegraphics[width=0.2\textwidth]{placeholder.png}
+	%ESP32 SOC. Online. In: . Dostupné z: https://products.espressif.com/api/user/product/description/param?picture=57. [cit. 2025-03-18].
+	\caption{Li-Ion}
+	\label{fig:Li-Ion}
+	\cite{}
+\end{wrapfigure}
+\textbf{\ac{lion}} akumulátory jsou starší verzí Litio Polymerových akumulátorů. Nemají tak vysoké vybíjecí proudy (pouze okolo 10A). Dále jsou větší, těžší, ale mnohem bezpečnější. Když si však člověk hedně nedá pozor, mohou také nepříjemně překvapit. Tato šance je zde však o mnoho nižší.
+\newline
+
+Nakonec byly vybrány akumulátory \ac{lion}, pro jejich odolnost skvělou dokumentaci a snadnou dostupnost.
+Některými z velikostí \ac{lion} akumulátorů jsou 16340, 18650 a 21700. Jelikož jsou 18650 nejdostupnější, byly zvoleny právě tyto články.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\newpage
+
+\subsection{Metody měření vzdálenosti}
+
+
+\begin{wrapfigure}{r}{0.2\textwidth}
+	\centering
+	\includegraphics[width=0.2\textwidth]{placeholder.png}
+	%ESP32 SOC. Online. In: . Dostupné z: https://products.espressif.com/api/user/product/description/param?picture=57. [cit. 2025-03-18].
+	\caption{Ultrazvukový senzor}
+	\label{fig:Utrlazvukový senzor}
+	\cite{}
+\end{wrapfigure}
+Měření vzdálenosti dělíme na absolutní a relativní. Absolutní udává, kolik dílků se od senzoru předmět nachází. Relativní udávají o kolik se tento předmět pohnul.\\
+Dále můžeme měření vzdálenosti rozdělit na kontaktní a bezkontaktní. Pro tuto práci jsou kontaktní metody měření vzdálenosti nepodstatné, budou tedy přeskočeny.\\
+Mezi bezkontaktní metody měření bůžeme zařadit metody využívající idukci, kapacitu, či délku letu signálu.\\
+Následující část se zaměřuje právě na měření pomocí délky signálu.
+\newline
+	
+	\begin{equation}\label{eq:Rovnice pro výpočet vzdálenosti}
+		s = frac{t}{2v}
+	\end{equation}
+
+Význym proměnných:\\
+$s$ = vzdálenost\\
+$v$ = rychlost letu\\
+$2$ = konstanta.
+\newline
+Rovnice \ref{eq:Rovnice pro výpočet vzdálenosti} popisuje závislost vzdálenosti na délce prodlevy mezi vysláním a zachycením zpětného odrazu a rychlostí vyslaného signálu.
+Signál musí urazit vzdálenost k překážce, odrazit se od ní a vrátit se zpět. Urazí tuto vzdálenost dvakrát.
+\newline
+
+
+\textbf{Ultrazvuk}
+Ultrazvukové senzory fungují na principu měření vzdálenosti pomocí doby mezi vysláním ultrazvukového signálu a jeho opětovným přijeťím po odrazu. Výhodou těchto senzorů je jednoduchost a cena.
+Nevýhodami mohou být větší rozměry, z toho vyplývající vyšší hmotnost, nízká frekvence měření a při měření jde slyšet tiché cvakání.
+\newline
+
+
+\begin{wrapfigure}{r}{0.2\textwidth}
+	\centering
+	\includegraphics[width=0.2\textwidth]{placeholder.png}
+	%ESP32 SOC. Online. In: . Dostupné z: https://products.espressif.com/api/user/product/description/param?picture=57. [cit. 2025-03-18].
+	\caption{TOF senzor}
+	\label{fig:TOF senzor}
+	\cite{}
+\end{wrapfigure}
+\textbf{\ac{tof}}
+\ac{tof} senzory fungují podobně, avšak mízto ultrazvuku používají laserový paprsek. Jejich výhodou je velikost, cca 8x4mm. Nízká hmotnost <1g, spotřeba pár mA a rychlost měření řídově přesahující rychlost Ultrazvukových senzorů.
+\newline
+\newpage
+
+\subsection{\ac{dps}}
+Jaké jsou možnosti výroby \ac{dps}? Máme dva hlavní výrobce. JLCPCB a PCBWAY. Oba tito výrobci nabízí výrobu kvalitních \ac{dps}. Zároveň také nabízí akci. při výrobě 5 nebo 10 dvouvrstvých \ac{dps} o tlouště macimálně 1.6mm, vás vyjsou na 5\$ + doprava, což je velmi přijatelná cena.
+
+Tato kapitola se zabývala povrchovým výzkumem problematiky týkající se tvorby samobalančního robota. Hlubší detaily se dočtete v praktické části této práce.
+
+

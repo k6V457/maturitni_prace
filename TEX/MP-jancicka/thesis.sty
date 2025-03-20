@@ -1582,16 +1582,16 @@ a~som si plne vedom%
 
   \newpage
 
-  \if@twoside
-    \thispagestyle{empty}%
-    \cleardoublepage
-  \fi
+  % \if@twoside
+  %   \thispagestyle{empty}%
+  %   \cleardoublepage
+  % \fi
 
   \setcounter{page}{1}      %% Obalka se do poctu stran nepocita
 }%
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%% Sazba kompletni uvodni stranky prikazem \maketitle %%
+%% Sazba kompletni uvodni stranky prikazem \maketitle   %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \@ifclassloaded{beamer}
 {
@@ -1681,7 +1681,7 @@ a~som si plne vedom%
         \twocolumn[\@vytvortitulku@vut]%
       \fi
     \else
-      \newpage
+      % \newpage
       \global\@topnum\z@   % Prevents figures from going at top of page.
       \@vytvortitulku@vut
     \fi
@@ -1697,7 +1697,7 @@ a~som si plne vedom%
 
 \def\@vytvortitulku@vut{%
 \renewcommand\baselinestretch{1.0}
-\newpage
+%\newpage
 \thispagestyle{empty}
 \begin{hyphenrules}{nohyphenation}
 \parindent=0pt
