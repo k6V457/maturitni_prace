@@ -48,7 +48,7 @@ Další důležitou podkapitolou je otestování, zda-li správně funguje progr
 	\label{fig:blokove schema zapojeni esp32}
 	\caption{Blokové schéma zapojení ESP32}
 \end{figure}
-Každý blok byl samostatně vyzkoušen na nepájivém poli. Největší problém představoval akcelerometr a gyroskop BMI160, který je rychlejší a přesnější alternativou pro MPU6050. Nemá však tak širokou podporu tvůrců a nepodařilo se nalězt vhodnou funkční knihovnu pro tento modul.
+Každý blok byl samostatně vyzkoušen na nepájivém poli. Největší problém představoval akcelerometr a gyroskop BMI160, který je rychlejší a přesnější alternativou pro MPU6050. Nemá však tak širokou podporu tvůrců a nepodařilo se nalězt vhodnou funkční knihovnu pro tento modul. Modul tedy musel být zapojen přes pomalejší sběrnici $I^2C$. Výhodou $I^2C$ oproti SPI je, že nepoužívá 4 vodiče, ale pouze dva. Tím sice trpí rychlost, ale pro tuto aplikaci by stejně nebyl využit potenciál SPI naplno a není výhodné psát vlastní knihovnu jenom proto, aby se data neaktualizovala rychlostí 1kHz, ale 2kHz. (rychlosti jsou odhadované)
 
 \begin{figure}[htbp!]
 	\includegraphics[width=\textwidth]{ESP32 microSD schematics_pinout.png}

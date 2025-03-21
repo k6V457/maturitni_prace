@@ -1,6 +1,20 @@
 \section{DPS}
+Tvorba DPS vychází ze schématu. Nejprve musely být vybrány součástky, aby mohly být přiřazeny jejich footprinty. Dále byly stáhnuty, nebo vytvořeny chybějící footprinty. Nakonec bylo vše importováno do editoru \ac{dps} a mohlo se začít s rozmisťováním.
+Nejprve bylo vytvořeno ohraničení pro samotné \ac{dps}. Následně byly vytvořeny výřezy pro uchycení krytů motorů. Dalším krokem bylo umístění ESP32 S3 modulu na vrchní stranu desky a tvorba výřezu. Výřez se zde nachází z důvodu menšího stínění antény. Dalším krokem bylo vytvoření napájecí části, jelikož se zde nachází nejvíce součástí a bylo by neefektivní začínat z druhé strany. (I to bylo zkoušeno.) Další na řadě byly konektory a H můstky. Až bylo rozmístění uspokojující, mohlo se začít s propojováním. Propojování samo o sobě je velmi primitivní, avšak docílit uspokojivého výsledku bez vzniku tzv. špaget, je velmi obtížné. Nakonec byl vytvořen groundplane a voltage plane. Myšlenka je taková, že groundplane by měl pohltit rušivé signály vysílané vysokofrekvenčními cestami a cestami s PWM.
+Na oponentův podnět byla spočítána kapacita mezi temito plochami ground a 3.3V. 
 
-\subsection{výběr komponent}
+\begin{equation}\label{vypocet_kapacity}
+    C= \mu_0 * \mu_r * frac{S}{d} 
+\end{equation}
+
+Význam proměnných:
+$\mu_0$ = relativní permitivita vakua. $4 \cdot \pi \cdot 10^{-7} H/m$
+$\mu_r$ = relativní permeabilita dielektrika. $4.4$ 
+$S$ = plocha elektrod. $(0.1 \cdot 0.1)$
+$d$ = mezera mezi elektrodami (0.0016)
+
+Po dosazení do rovnice \ref{vypocet_kapacity} $4 \pi \cdot 10^{-7} \cdot 4.4 \cdot \frac{0.1*0.1}{1.6*10^{-3}}$ vyšla kapacita $35\mu F$ Tato kapacita již není zanedatelná avšak pro nás je poměrně výhodná, jelikož může sloužit jakoždo vyhlazovací paralelní kondenzátor.
+\subsection{výběr komponent} 
 
 \subsection{tvorba vlastních footprintů}
 

@@ -120,11 +120,11 @@ Poslední způsob balení ESP32 čipu je již implementace do koncového zaříz
 
 \begin{wrapfigure}{r}{0.2\textwidth}
 	\centering
-	\includegraphics[width=0.2\textwidth]{placeholder.png}
+	\includegraphics[width=0.2\textwidth]{DC.png}
 	%ESP32 SOC. Online. In: . Dostupné z: https://products.espressif.com/api/user/product/description/param?picture=57. [cit. 2025-03-18].
 	\caption{DC motor}
 	\label{fig:DC motor}
-	\cite{}
+	\cite{polulu_dc}
 \end{wrapfigure}
 \textbf{DC motory} Nejjednoduššími motory jsou DC. Mají skvělý poměr velikosti, hmotnosti a výkonu. Dají se ovládat změnou napětí. Neovládají se však lineárně, ale kvadraticky. Při dvojnásobném zvýšení napětí se čtyřikrát zvýší výkon.
 \begin{equation}\label{eq:dependence of power on voltage, DC motor}
@@ -143,11 +143,11 @@ Točivý moment těchto motorů nebývá zpravidla nejvyšší a rychlost otáč
 
 \begin{wrapfigure}{r}{0.2\textwidth}
 	\centering
-	\includegraphics[width=0.2\textwidth]{placeholder.png}
+	\includegraphics[width=0.2\textwidth]{servo.png}
 	%ESP32 SOC. Online. In: . Dostupné z: https://products.espressif.com/api/user/product/description/param?picture=57. [cit. 2025-03-18].
 	\caption{Servo motor}
 	\label{fig:Servo motor}
-	\cite{}
+	\cite{polulu_servo}
 \end{wrapfigure}
 \textbf{Servo motory} Servo motory jsou dvojího druhu. S možností nastavení úhlu pouze ve velmi omezeném rozsahu, zpravidla to bývá 270 \textdegree.
 Druhou variantou jsou motory s aktivní regulací rychlosti otáčení. Chovají se podobně jako \ac{dc} motory, avšak jejich výkon je lineární.
@@ -157,11 +157,11 @@ Stejně jako u DC motorů nedokážeme precizně určit otočení motoru bez pou
 
 \begin{wrapfigure}{r}{0.2\textwidth}
 	\centering
-	\includegraphics[width=0.2\textwidth]{placeholder.png}
+	\includegraphics[width=0.2\textwidth]{stepper.jpg}
 	%ESP32 SOC. Online. In: . Dostupné z: https://products.espressif.com/api/user/product/description/param?picture=57. [cit. 2025-03-18].
 	\caption{Stepper motor}
 	\label{fig:Stepper motor}
-	\cite{}
+	\cite{polulu_stepper}
 \end{wrapfigure}
 \textbf{Stepper motory}
 Stepper motory jsou typ synchronní motory s velmi precizním krokem (step). Jsou řízeny signálem o diskrétních hladinách. Bývají často používány v CNC strojích. Tento typ motoru má relativně dobrý točivý moment i rychlost otáčení. Je však ke svému výkonu těžký a velký.
@@ -171,11 +171,11 @@ Tento driver se většinou ovládá pomocí sériové komunikace UART, IIC, nebo
 
 \begin{wrapfigure}{r}{0.2\textwidth}
 	\centering
-	\includegraphics[width=0.2\textwidth]{placeholder.png}
+	\includegraphics[width=0.2\textwidth]{bldc.png}
 	%ESP32 SOC. Online. In: . Dostupné z: https://products.espressif.com/api/user/product/description/param?picture=57. [cit. 2025-03-18].
 	\caption{BLDC motor}
 	\label{fig:BLDC motor}
-	\cite{}
+	\cite{dratek_bldc}
 \end{wrapfigure}
 \textbf{BLDC motory}
 \ac{bldc} motory jsou synchronní motory, stejně jako steppery. Na rozdíl od nich se nepohybují po krocích, ale plynule. Řídí se plynulým, téměř sinusovým signálem. Stejně jako synchronní motory se musí rozbíhat plynule. Při přetížení mohou začít přeskakovat a může dojít i ke zničení.
@@ -186,11 +186,11 @@ Nakonec byly zvoleny DC motory s hallovým senzorem pro jejich snadné ovládán
 \subsection{Možnosti napájení}
 \begin{wrapfigure}{r}{0.2\textwidth}
 	\centering
-	\includegraphics[width=0.2\textwidth]{placeholder.png}
+	\includegraphics[width=0.2\textwidth]{lipol.png}
 	%ESP32 SOC. Online. In: . Dostupné z: https://products.espressif.com/api/user/product/description/param?picture=57. [cit. 2025-03-18].
 	\caption{Li-Po}
 	\label{fig:Li-Po}
-	\cite{}
+	\cite{lipol_picture}
 \end{wrapfigure}
 Napájení robota musí být přenosné. Nemůže tedy být připojen do zásuvky, nebo nějaké nabíječky. Je nutno použít akumulátory.
 Jaké máme druhy akumulátorů? Bylo uvažováno pouze nad dvěmi typy. \ac{lipo} a \ac{lion}.
@@ -201,11 +201,11 @@ Jaké máme druhy akumulátorů? Bylo uvažováno pouze nad dvěmi typy. \ac{lip
 
 \begin{wrapfigure}{r}{0.2\textwidth}
 	\centering
-	\includegraphics[width=0.2\textwidth]{placeholder.png}
+	\includegraphics[width=0.2\textwidth]{18650.png}
 	%ESP32 SOC. Online. In: . Dostupné z: https://products.espressif.com/api/user/product/description/param?picture=57. [cit. 2025-03-18].
 	\caption{Li-Ion}
 	\label{fig:Li-Ion}
-	\cite{}
+	\cite{18650_picture}
 \end{wrapfigure}
 \textbf{\ac{lion}} akumulátory jsou starší verzí Litio Polymerových akumulátorů. Nemají tak vysoké vybíjecí proudy (pouze okolo 10A). Dále jsou větší, těžší, ale mnohem bezpečnější. Když si však člověk hedně nedá pozor, mohou také nepříjemně překvapit. Tato šance je zde však o mnoho nižší.
 \newline
@@ -222,11 +222,11 @@ Některými z velikostí \ac{lion} akumulátorů jsou 16340, 18650 a 21700. Jeli
 
 \begin{wrapfigure}{r}{0.2\textwidth}
 	\centering
-	\includegraphics[width=0.2\textwidth]{placeholder.png}
+	\includegraphics[width=0.2\textwidth]{ultrasound.png}
 	%ESP32 SOC. Online. In: . Dostupné z: https://products.espressif.com/api/user/product/description/param?picture=57. [cit. 2025-03-18].
 	\caption{Ultrazvukový senzor}
 	\label{fig:Utrlazvukový senzor}
-	\cite{}
+	\cite{ultrasound}
 \end{wrapfigure}
 Měření vzdálenosti dělíme na absolutní a relativní. Absolutní udává, kolik dílků se od senzoru předmět nachází. Relativní udávají o kolik se tento předmět pohnul.\\
 Dále můžeme měření vzdálenosti rozdělit na kontaktní a bezkontaktní. Pro tuto práci jsou kontaktní metody měření vzdálenosti nepodstatné, budou tedy přeskočeny.\\
@@ -256,11 +256,11 @@ Nevýhodami mohou být větší rozměry, z toho vyplývající vyšší hmotnos
 
 \begin{wrapfigure}{r}{0.2\textwidth}
 	\centering
-	\includegraphics[width=0.2\textwidth]{placeholder.png}
+	\includegraphics[width=0.2\textwidth]{tof.png}
 	%ESP32 SOC. Online. In: . Dostupné z: https://products.espressif.com/api/user/product/description/param?picture=57. [cit. 2025-03-18].
 	\caption{TOF senzor}
 	\label{fig:TOF senzor}
-	\cite{}
+	\cite{tof}
 \end{wrapfigure}
 \textbf{\ac{tof}}
 \ac{tof} senzory fungují podobně, avšak mízto ultrazvuku používají laserový paprsek. Jejich výhodou je velikost, cca 8x4mm. Nízká hmotnost <1g, spotřeba pár mA a rychlost měření řídově přesahující rychlost Ultrazvukových senzorů.

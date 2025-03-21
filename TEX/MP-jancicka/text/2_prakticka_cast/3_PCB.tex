@@ -1,16 +1,43 @@
-\section{Návrh \acs{DPS}}
+\section{Návrh schématu}
 
-sekce se zabývá návrhem tištěného spoje. 
-
+Tato kapitola se zabývá návrhem schématu tištěného spoje. Zapojení je rozděleno do čtyř logických prvků. Jedná se o první verzi schématu.
 \subsection{Tvorba vlastních symbolů}
+\begin{wrapfigure}{l}{0.3\textwidth}% příklad symbolu
+    \includegraphics[width = 0.3\textwidth]{H-bridge.png}
+    \label{custom_kicad_symbol}
+    \caption{Vlastní symbol KiCAD, H můstek}
+\end{wrapfigure}
+KiCAD neobsahuje symboly všech součástek na světě. Není to totiž reálné. Občas je tedy nutné vytvořit si vlastní symboly pro své součástky. Pro tuto práci bylo vytvořeno několik symbolů. Symbol pro step up moduly, symbol pro ochranu baterií a symbol pro akcelerometr.
+\newline
+\subsection{Celek}
 
-\subsection{Napájení}
+
+
+\newpage
+\includepdf[angle = -90]{obrazky/old_schematic.pdf}
 
 \subsection{vstupy}
 
-\subsection{ESP}
-výběr, porovnání modulů espressif.
 
+
+\newpage
+\includepdf[angle = -90]{obrazky/old_schematic-input.pdf}
+
+Prvním logickým prvkem jsou vstupy
+
+\subsection{H-můstky}
+
+
+
+\newpage
+\includepdf[angle = -90]{obrazky/old_schematic-H-Bridge.pdf}
+\subsection{ESP}
+
+
+
+\newpage
+\includepdf[angle = -90]{obrazky/old_schematic-logic.pdf}
 \subsection{výstupy}
 
-přišlo se na to, že schéma je příliž složité a dalo by se zjednodušit pomocí ESP32 S3
+\newpage
+\includepdf[angle = -90]{obrazky/old_schematic-PSU.pdf}

@@ -1,5 +1,48 @@
 \section{Tvorba modelů}
 
-Tato část práce
+Tato část práce se zabývá tvorbou 3D modelů. Pro tuto aplikaci jsou zapotřebí pouze dva modely. Respektive tedy jeden a jeho zrcadlová kopie. Stačí tedy vymodelovat pouze jeden model. Tímto modelem je držák pro motor.
 
 \subsection{Držák motorů}
+Motor je potřebaa nějakým způsobem připevnit k \ac{dps}. Nejprve je zapotřebí datasheet s rozměry motoru a děr.
+
+\begin{figure}[htbp!]
+    \includegraphics[width=\textwidth]{Motor_dimensions.png}
+    \label{fig:rozmery_motoru}
+    \caption{Rozměry motoru}
+    \cite{aliexpress_mikromotor}
+\end{figure}
+
+Dalším krokem bylo vytvoření nápadu, jak by se dal motor přidělat k \ac{dps}
+\newline
+
+\begin{wrapfigure}{r}{0.4\textwidth}
+    \includegraphics[width=0.4\textwidth]{motor_holder_drawing.jpg}
+    \label{fig:nacrt_motoru}
+    \caption{Náčrt motoru}
+\end{wrapfigure}
+
+Třetím krokem bylo předělat vizi v 3D model. K tomuto byl použit program FreeCAD. Tolerance byla zvolena 0.2mm. Tato tolerance byla použita pro části, které by se neměly hýbat. Pro pohyblivé části je vhodné zvolit vyšší hodnotu tolerance, ale také záleží na přesnosti samotné tiskárny a nastavení tisku.
+Model nebyl tvořen celý najednou, ale po částech. Vždy byla vymodelována jedna část, například čelo a to bylo následně vytištěno, aby mohly být ověřeny všechny rozměry a tolerance a kryt následně fungoval tak, jak má.
+\newline
+
+\begin{wrapfigure}{l}{0.5\textwidth}
+    \includegraphics[width = 0.5\textwidth]{motor_holder_iterations.jpg}
+    \label{fig:vsechny_prototypy_krytu_motoru}
+    \caption{Všechny prototypy krytu motoru}
+\end{wrapfigure}
+Další krok je piřpravit tento model pro tisk. Stačí otevřít Prusa Slicer, importovat model v kompatibilním formátu, nastavit tiskárnu a parametry tisku a zmáčknout tisk.
+\newline
+
+\begin{wrapfigure}{r}{0.3\textwidth}
+    \includegraphics[width = 0.3\textwidth]{Motor_pro_tisk.png}
+    \label{fig:motor pro tisk}
+    \caption{Motor pro tisk}
+\end{wrapfigure}
+Celkem bylo vytvořeno okolo 13 prototypů než byl vytvořen design, ve kterém motor drží, ale dá se do krytu pohodlně vložit a nikde při chodu nedrhne.
+\newline
+
+\begin{wrapfigure}{r}{0.3\textwidth}
+    \includegraphics[width = 0.3\textwidth]{final_motor_holder_top.jpg}
+    \label{fig:Final_version_of_motor_holder}
+    \caption{Finální verze držáku motoru i s motorem}
+\end{wrapfigure}

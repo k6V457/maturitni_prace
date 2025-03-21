@@ -1,2 +1,10 @@
 \section{Návrh programu}
 
+Tato sekce se zabývá návrhem programu pro ovládání samobalančního robota.
+
+\subsection{FreeRTOS}
+FreeRTOS je operační systém běžítí na mikrokontroleru ESP32. Tento operační systém je pro nás výhodný v tom, že nevyhodnocuje data tak, jak přijdou, ale v diskrétích časových intervalech. Není tedy zajištěna pouze správnost dat, ale také jejich správné načasování. Tento přistup se používá pro aplikace, kde je časování nezbytné. Těmito oblastmi mohou být: zdravotnictví, armáda, robotika, či letectví. Jelikož pro samobalančního robota je vyvažování v co nejkratších intervalech klíčové, bude použit tento operační systém.
+
+\subsection{Vícejáddrový problém}
+Vícejádrové procesy mají jeden obrovský problém. Co se stane, když mi bude trvat čtení čísla dva takty procesoru, ale mezitím mi tohle číslo přeppíše druhý procesor? Tato situace není zrovna ideální. Vznikly tedy návěstidla a mutexy. Ve zkratce se jedná o třetí proměnnou, která ukazuje, zda je na proměnné zrovna prováděna nějaká změna. Tímto přístupem se dá chybám spojeným s přepisem dat druhým jádrem předejít.
+

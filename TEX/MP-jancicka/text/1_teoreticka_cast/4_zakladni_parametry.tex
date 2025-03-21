@@ -7,9 +7,7 @@ Prvním omezením je velikost samotného \ac{dps}. Jestliže bude využita sleva
 
 Na 3D tiskárně byla vytištěna plastová destička o rozměrech 100x100x1.6mm, pro lepší vizualizaci rozměru \ac{dps}.
 
-\subsection{Základní součásti}
-
-\textbf{Motory}
+\subsection{Motory}
 U těch je hlavní točivý moment, který musí odpovívat rovnici\\
 \begin{equation}\label{eq:vypocet sily motoru}
 	F = m \cdot q \cdot l \cdot \sin \left( \theta \right) \cdot \frac{S}{2}
@@ -21,34 +19,59 @@ q = gravitační zrychlení země [$9.81m \cdot s^{-2}$]\\
 l = výška robota\\
 $\theta$ = úhel naklonění robota vůči nulové ose\\
 S = safety factor [2]\\
-2 = počet motorú (stačí pouze polovina síly potřebné pro zvrácení robota)
+2 = počet motorů (stačí pouze polovina síly potřebné pro zvrácení robota)
 \newline
 
-Přibližná váha robota bude max 300g. Maximální velikost je omezena výrobcem PCB JLCPCB na 100x100mm, připočteme poloměr kol a celkový výška je 15cm. Maximální teoretická rychlost byla zvolena alespoň 2m/s což je rychlost chůze člověka. Zrychlení bylo zvoleno 2m/s aby robot dokázal zrychlovat i do mírného kopce a nezabralo to nesmyslně dlouho. Po dosazení do soustavy rovnic:
-$F_{l}=m\cdot l\cdot q\cdot\sin\alpha\cdot\frac{S}{2}$
-Vypočteme náklon dosazením zrychlení
-$\alpha=\sin^{-1}\left(\frac{a}{q}\right)$
-Přepočteme na $kg*{cm}^{-1}$
-$F_{l}\cdot\frac{100}{9.81}$
-Spočteme si požadovanou rychlost otáčení motoru:
-$v=\frac{2\pi ro}{60}$
-Safety factor byl zvolen 3.
-F vyšlo 0.2025N*m
-= 2.046kg*cm
-Tyto hodnoty byly velmi zvýšené.
+Maximální hmotnost robota bude 300g.\\
+maximální výška je 150mm. Jedná se o maximální výšku PCB (100mm) + maximální poloměr kol (50mm).
+Zrychlení se dá vypočítat podle vztahu $a = q \cdot sin(\theta)$\\
+Pro výpočtu maximálního nákllonu můžeme využít vztah $\theta = sin^{-1}(\frac{a}{q})$\\
+Pro praktické zrychlení alespoň $1m*s^{-2}$ je potřeba využít úhel $\theta = 5.85°$\\
+Po dosazení do rovnice \ref{eq:vypocet sily motoru} vyjde požadovaný točivý moment $45mNm$\\
+Vztah pro přepočet $Nm$ na $kg \cdot cm$ je $kg \cdot cm = \frac{Nm}{q} \ cdot 100$\\
+Po dosazení vyjde točivý moment jednoho motoru $0.459kg \cdot cm$
+\begin{figure}[htbp!]
+	\includegraphics[width = \textwidth]{motor_table.png}
+	\label{table_with_motor_parameters}
+	\caption{Tabulka obsahuje parametry mikromotorů 12GA-N20}
+	\cite{aliexpress_mikromotor}, upraveno
+\end{figure}
 
-Safety factor stačí dva,
+Z tabulky \ref{table_with_motor_parameters}, parametry mikromotorů 12GA-N20 při napětí 12V vyhovuje motor o rychlosti $1000rpm$
 
-Možná praktická část?
+\subsection{Baterie}
+Jeden článek baterie 18650 má hmotnost 46g.
 
-\textbf{Baterie}
-Jeden člinek baterie 18650 má hmotnost okolo
+\begin{table}[htbp!]
+	\centering
+	\begin{tabularx}{\textwidth}{|X|X|X|X|X|}\hline
+		Počet článků & Přibližná $m$ $\left[g\right]$ & Průměr. $U$ $\left[ V \right]$ & Max. $P$ $\left[ W \right]$ \\ \hline
+		1S           & 46 + 15     & 3.6                            & 36                          \\ \hline
+		2S           & 92 + 25     & 7.2                            & 72                          \\ \hline
+		3S           & 138 + 35    & 11.8                           & 118                         \\ \hline
+	\end{tabularx}
+	\label{tab:tabulka 18650}
+	\caption{Tabulka porovnání počtu článků 18650}
+\end{table}
+Při použití tří článků by sice nebyly potřebné step up moduly, avšak kvůli velikosti není kam tři články umístit.
+maximální výkon byl počítán ze vztahu $p=U \cdot I$ kde i je průměrné napětí a I je 10A.
+Hmotnost článků je známá, hmotnost držáku je však pouze odhadovaná.
+\newline
 
+\begin{table}[htbp!]
+	\centering
+	\begin{tabularx}{\textwidth}{|X|X|X|X|X|}\hline
+		Název modulu & Přibliž. spotř. $P$ $\left[W\right]$ & Požad. $U$ $\left[ V \right]$ & Max. $P$ $\left[ W \right]$ \\ \hline
+		1S           & 46 + 15     & 3.6                            & 36                          \\ \hline
+		2S           & 92 + 25     & 7.2                            & 72                          \\ \hline
+		3S           & 138 + 35    & 11.8                           & 118                         \\ \hline
+	\end{tabularx}
+	\label{tab:tabulka_prikonnu}
+	\caption{Tabulka příkonů}
+\end{table}
 
-\textbf{Motory}
-
-\subsection{program}
-Program se bude zestávat z více částí. Lze použít více možnosti.
+\subsection{Motory, 2. kolo }
+Jelikož již známe přibližnou hmotabulka 18650
 
 \textbf{Round robin}
 Jedna hlavni funkce bude vše řídit.
