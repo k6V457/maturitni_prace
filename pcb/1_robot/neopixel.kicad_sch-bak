@@ -1,0 +1,8 @@
+(kicad_sch
+	(version 20231120)
+	(generator "eeschema")
+	(generator_version "8.0")
+	(uuid "ac020ad6-1020-427f-8735-3942ed1dd9ff")
+	(paper "A4")
+	(lib_symbols)
+)

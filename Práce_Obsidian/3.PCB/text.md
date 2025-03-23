@@ -17,8 +17,20 @@ Po ověření na nepájevém poli může být pokročeno k dalšímu kroku. Náv
 		3. SD karta
 
 ## Napájení
-celkem přímočarý proces
+celkem nepřímočarý proces
+
+
+
 
 ## H Můstek
 Jako reference pro design byl použit článek https://www.modularcircuits.com/blog/articles/h-bridge-secrets/h-bridges-the-basics/
 
+
+
+
+___
+
+Ovládání
+websocket webovka s joystickem
+posílá
+int8_t X, Y; To se poté přepočítává na int8_t A, B;

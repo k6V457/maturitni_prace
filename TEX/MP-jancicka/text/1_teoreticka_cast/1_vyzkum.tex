@@ -24,7 +24,7 @@ Jak tento problém vyřešit? Co by se toereticky stalo, kdybychom začali touto
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 
-\subsection{metody řízení}
+\subsection{Metody řízení}
 Jaké tedy existují metody řízení? Nejčastěji se používá kombinace Arduina, nebo podobného mikrokontroleru s akcelerometrem \ac{MPU6050}. Tato kombinace je jednoduchá pro realizaci díky široké dostupnosti knihoven pro kombinaci Arduino, \ac{MPU6050}. Není však ideální kvůli nízkému výkonu Arduina. Frekvence čipu arduina je $16MHz$. Pro srovnání, frekvence moderního procesoru v počítači je řádové v $GHz$. Když mikrokontroler nestíhá vyhodnocovat změny a stabilizovat robota, celý se poté začne třepat a musí dělat větší úpravy pohybu pro jeho stabilizaci.
 Alternativou je použití mikrokontroleru \ac{ESP32}. Jeho až 2 240MHz jádra jsou více než schopná provádět veškeré výpočty s požadovanou frekvencí.
 
@@ -36,7 +36,7 @@ Alternativou je použití mikrokontroleru \ac{ESP32}. Jeho až 2 240MHz jádra j
 	%By Arturo Urquizo - File:PID.svg, CC BY-SA 3.0, https://commons.wikimedia.org/w/index.php?curid=17633925
 \end{wrapfigure}
 
-Nejčastěji používaný algoritmus pro stabilizaci je \ac{pid}. Ten, jak název napovídá kombinuje 3 druhy odezvy. Proporcionální část reaguje na okamžitou změnu. Udává, o kolik se má systém pohnout v ideálním případě. Druhá část je intčegrační. Slouží k tomu, aby se systém nedostal do bodu, kdy se donekonečna přibližuje, ale nikdy se nedostane do požadované pozice. Integrační část tuto chybu sčítá a udává, o kolik se měl systém pohnout, ale nepohnul. Derivační část se snaží předpovědět, o kolik se ssystém pohne. Derivace sama o sobě udává rychlost změny. Kombinací a vylazením těchto tří složek dosáhneme téměř perfektní řídící smyčky.
+Nejčastěji používaný algoritmus pro stabilizaci je \ac{pid}. Ten, jak název napovídá kombinuje 3 druhy odezvy. Proporcionální část reaguje na okamžitou změnu. Udává, o kolik se má systém pohnout v ideálním případě. Druhá část je intčegrační. Slouží k tomu, aby se systém nedostal do bodu, kdy se donekonečna přibližuje, ale nikdy se nedostane do požadované pozice. Integrační část tuto chybu sčítá a udává, o kolik se měl systém pohnout, ale nepohnul. Derivační část se snaží předpovědět, o kolik se systém pohne. Derivace sama o sobě udává rychlost změny. Kombinací a vylazením těchto tří složek dosáhneme téměř perfektní řídící smyčky.
 Rovnice \ref{eq:PID equation} popisuje matematickou závislost mezi těmito třemi částmi.
 
 \begin{equation}\label{eq:PID equation}
@@ -47,18 +47,15 @@ Rovnice \ref{eq:PID equation} popisuje matematickou závislost mezi těmito tře
 
 
 Význam proměnných rovnice \ref{eq:PID equation}:\\
-$u(t)$ = \ac{pid} kontrolní proměnná\\
-$K_p$ = proporcionální zvětšení\\
-$k_i$ = integrační zvětšení\\
-$k_d$ = derivační zvětšení\\
-$e(t)$ = velikost chyby\\
-$de$ = změna chybové hodnoty\\
+$u(t)$ = \ac{pid} kontrolní proměnná,	$K_p$ = proporcionální konstanta\\
+$k_i$ = integrační konstanta, 			$k_d$ = derivační konstanta\\
+$e(t)$ = velikost chyby,					$de$ = změna chybové hodnoty\\
 $dt$ = prodleva mezi měřeními
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \newpage
 
-\subsection{výběr "balení" \ac{ESP32}}
+\subsection{Výběr "balení" \ac{ESP32}}
 %Výběr formátu
 \begin{wrapfigure}{r}{0.3\textwidth}
 	\centering
@@ -105,7 +102,7 @@ Modul WROOM je kombinací obou předchozích modulů. Piny se nenachází pod mo
 
 Předposledním způsobem balení je tzv \ac{devboard}. Ta obsahuje modul \ac{ESP32} s dalšími obvody, mezi kterými můžeme najít blink-diodu, USB převodník, či napěťový regulátor na 3V3. Tento typ balení slouží pro vývoj aplikací. Jelikož se na této desce nachází vše co potřebujete a vám stačí ji pouze připojit do počítače a můžete se ponořit do světa ESP32. ESP vývojovou desku si můžete prohlédnout na obrázku \ref{fig:ESP3 DevKitC}.\\
 
-Poslední způsob balení ESP32 čipu je již implementace do koncového zařízení. ESP32 je díky možnosti bezdrátového připojení velmi rozšířenou volbou v oblasti IOT. ESP32 můžeme nalézt ve všemožných spotřebičích od chytrých vypínačů, žárovek, či dokonce chytré lampy. Tato práce bude také spadat do kategorie koncových zařízení. 
+Poslední způsob balení ESP32 čipu je již implementace do koncového zařízení. ESP32 je díky možnosti bezdrátového připojení velmi rozšířenou volbou v oblasti IOT. ESP32 můžeme nalézt ve všemožných spotřebičích od chytrých vypínačů, žárovek, či dokonce chytré lampy. Tato práce bude také spadat do kategorie koncových zařízení.
 
 
 
@@ -184,17 +181,17 @@ Pro ovládání se používají drivery. Tyto drivery mohou být programovány p
 Nakonec byly zvoleny DC motory s hallovým senzorem pro jejich snadné ovládání, houževnatost možnost přesné regulace počtu otočení a nízké ceny.
 
 \subsection{Možnosti napájení}
-\begin{wrapfigure}{r}{0.2\textwidth}
-	\centering
-	\includegraphics[width=0.2\textwidth]{lipol.png}
-	%ESP32 SOC. Online. In: . Dostupné z: https://products.espressif.com/api/user/product/description/param?picture=57. [cit. 2025-03-18].
-	\caption{Li-Po}
-	\label{fig:Li-Po}
-	\cite{lipol_picture}
-\end{wrapfigure}
 Napájení robota musí být přenosné. Nemůže tedy být připojen do zásuvky, nebo nějaké nabíječky. Je nutno použít akumulátory.
 Jaké máme druhy akumulátorů? Bylo uvažováno pouze nad dvěmi typy. \ac{lipo} a \ac{lion}.
 \newline
+
+\begin{figure}[htbp!]
+	\centering
+	\includegraphics[width=0.2\textwidth]{lipol.png}
+	\caption{Li-Po}
+	\label{fig:Li-Po}
+	\cite{lipol_picture}
+\end{figure}
 
 \textbf{\ac{lipo}} akumulátory jsou levné, mají vysokou kapacitu, obrovské vybíjecí proudy (klidně 200A) a jsou skladné. Mají však jeden velmi nepříjemný zádrhel. Při nesprávném zacházení rády explodují. Musí proto být striktně dodrženy macimální hodnoty uváděné výrobcem a hlavně musí být nabíjeny kvalitní nabíječkou. Ničim takovým bohužel nedisponuji.
 \newline
@@ -202,11 +199,11 @@ Jaké máme druhy akumulátorů? Bylo uvažováno pouze nad dvěmi typy. \ac{lip
 \begin{wrapfigure}{r}{0.2\textwidth}
 	\centering
 	\includegraphics[width=0.2\textwidth]{18650.png}
-	%ESP32 SOC. Online. In: . Dostupné z: https://products.espressif.com/api/user/product/description/param?picture=57. [cit. 2025-03-18].
 	\caption{Li-Ion}
 	\label{fig:Li-Ion}
 	\cite{18650_picture}
 \end{wrapfigure}
+
 \textbf{\ac{lion}} akumulátory jsou starší verzí Litio Polymerových akumulátorů. Nemají tak vysoké vybíjecí proudy (pouze okolo 10A). Dále jsou větší, těžší, ale mnohem bezpečnější. Když si však člověk hedně nedá pozor, mohou také nepříjemně překvapit. Tato šance je zde však o mnoho nižší.
 \newline
 
@@ -233,10 +230,10 @@ Dále můžeme měření vzdálenosti rozdělit na kontaktní a bezkontaktní. P
 Mezi bezkontaktní metody měření bůžeme zařadit metody využívající idukci, kapacitu, či délku letu signálu.\\
 Následující část se zaměřuje právě na měření pomocí délky signálu.
 \newline
-	
-	\begin{equation}\label{eq:Rovnice pro výpočet vzdálenosti}
-		s = frac{t}{2v}
-	\end{equation}
+
+\begin{equation}\label{eq:Rovnice pro výpočet vzdálenosti}
+	s = \frac{t}{2v}
+\end{equation}
 
 Význym proměnných:\\
 $s$ = vzdálenost\\
@@ -268,5 +265,10 @@ Nevýhodami mohou být větší rozměry, z toho vyplývající vyšší hmotnos
 \newpage
 
 \subsection{\ac{dps}}
-Jaké jsou možnosti výroby \ac{dps}? Máme dva hlavní výrobce. JLCPCB a PCBWAY. Oba tito výrobci nabízí výrobu kvalitních \ac{dps}. Zároveň také nabízí akci. při výrobě 5 nebo 10 dvouvrstvých \ac{dps} o tlouště maximálně 1.6mm, vás vyjsou na 5\$ + doprava, což je velmi přijatelná cena.
-\newline
+Jaké jsou možnosti výroby \acl{dps}, anglicky \acl{pcb}? Máme dva hlavní výrobce. JLCPCB a PCBWAY. Oba tito výrobci nabízí výrobu kvalitních \ac{dps}. Zároveň také nabízí akci. při výrobě 5 nebo 10 dvouvrstvých \ac{dps} o tlouště maximálně 1.6mm, vás vyjsou na 5\$ + doprava, což je velmi přijatelná cena.
+
+\begin{figure}[htbp!]
+	\includegraphics[width = \textwidth]{PCB_render_F (Copy).png}
+	\label{obrazek_s_dps}
+	\caption{Obrázek s deskou plošných spojů}
+\end{figure}

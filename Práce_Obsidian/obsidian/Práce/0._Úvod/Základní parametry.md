@@ -12,6 +12,12 @@ Spočteme si požadovanou rychlost otáčení motoru:
 $v=\frac{2\pi ro}{60}$
 Safety factor byl zvolen 3.
 F vyšlo 0.2025N*m
+Přepočteme na KG*cm ve kterých se normálně točivý moment motorů nachází
+F = 
+n*m = m*q*l
+$kg*cm = Nm/q*100$
+$nm = \frac{kg*cm*q}{100}$
+2kg*cm
 Příklad výpočtu: 
 !!NEZAPOMNI!!
 

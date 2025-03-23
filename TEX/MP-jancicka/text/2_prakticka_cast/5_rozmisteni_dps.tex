@@ -4,7 +4,7 @@ Nejprve bylo vytvořeno ohraničení pro samotné \ac{dps}. Následně byly vytv
 Na oponentův podnět byla spočítána kapacita mezi temito plochami ground a 3.3V. 
 
 \begin{equation}\label{vypocet_kapacity}
-    C= \mu_0 * \mu_r * frac{S}{d} 
+    C= \mu_0 \cdot \mu_r \cdot \frac{S}{d} 
 \end{equation}
 
 Význam proměnných:
@@ -13,9 +13,54 @@ $\mu_r$ = relativní permeabilita dielektrika. $4.4$
 $S$ = plocha elektrod. $(0.1 \cdot 0.1)$
 $d$ = mezera mezi elektrodami (0.0016)
 
-Po dosazení do rovnice \ref{vypocet_kapacity} $4 \pi \cdot 10^{-7} \cdot 4.4 \cdot \frac{0.1*0.1}{1.6*10^{-3}}$ vyšla kapacita $35\mu F$ Tato kapacita již není zanedatelná avšak pro nás je poměrně výhodná, jelikož může sloužit jakoždo vyhlazovací paralelní kondenzátor.
-\subsection{výběr komponent} 
+Po dosazení do rovnice \ref{vypocet_kapacity} $4 \pi \cdot 10^{-7} \cdot 4.4 \cdot \frac{0.1 \cdot 0.1}{1.6 \cdot 10^{-3}}$ vyšla kapacita $35\mu F$ Tato kapacita již není zanedatelná avšak pro nás je poměrně výhodná, jelikož může sloužit jakoždo vyhlazovací paralelní kondenzátor.
+\subsection{Výběr komponent}
+\begin{wrapfigure}{r}{0.3\textwidth}
+    \includegraphics[width = 0.3\textwidth]{priklad_footprintu_BMI160.png}
+    \label{fig:priklad_footprintu}
+    \caption{Příklad vlastního footprintu modulu BMI160}
+\end{wrapfigure}
+Koponenty byly vybírány podle funkčnosti, jednoduchosti zapojení a ceny v tomto pořadí. SMD rezistory a kondenzátory byly vybírány v rozměrech 0805 (imperial) proto, aby šly napájet rukou. Některé komponenty jsou větších formátů a to hlavně z důvodu většího zatížení, či použití jako přemostění.
 
-\subsection{tvorba vlastních footprintů}
+\subsection{Tvorba vlastních footprintů}
+Vlastní footprinty se tvoří podobně jako vlastní symboly. Hlavní je dát si pozor na správné seřazení pinů.
+\newline
 
+
+\subsection{Testování rozložení}
+Nejprve bylo vytvořeno fyzické rozložení součásti na vytištěnou maketu \ac{dps}.
+
+\begin{figure}[htbp!]
+    \includegraphics[width = \textwidth]{Rozlozeni_PCB_bat_nalezato.jpeg}
+    \label{PCB_nalezato}
+    \caption{Návrh PCB s akumulátory na šířku}
+\end{figure}
+Byly vytvořeny dva návrhy, jeden s baterií navýšku a druhý s baterií na šířku. Nakonec byla zvolena orientace na šířku, jelikož navýšku by baterie kolidovala s motory a s prostorem pro anténu ESP32.
+\begin{figure}[htbp!]
+    \includegraphics[width = \textwidth]{Rozlozeni_PCB_bat_navysku.jpeg}
+    \label{PCB_nastojato}
+    \caption{Návrh PCB s akumulátory na výšku}
+\end{figure}
+
+\newpage
 \subsection{Rozmístění a propojení}
+Jakmile bylo vytvořenéo přibližné rozmístění součástek, mohl být opět otevřen kicad a vytvořena \ac{dps}.
+\begin{figure}[htbp!]
+    \includegraphics[width = \textwidth]{PCB.png}
+    \label{PCB}
+    \caption{Finální verze PCB}
+\end{figure}
+
+Předposledním krokem je vygenerování 3D modelu pro ověření rozložení a poslední kontrolu.
+
+\begin{figure}
+    \includegraphics[width = \textwidth]{PCB_render_F.png}
+    \label{PCB_render_F}
+    \caption{Obrázek finálního renderu PCB zepředu}
+\end{figure}
+
+\begin{figure}
+    \includegraphics[width = \textwidth]{PCB_render_B.png}
+    \label{PCB_render_B}7
+    \caption{Obrázek finálního renderu PCB zezadu}
+\end{figure}

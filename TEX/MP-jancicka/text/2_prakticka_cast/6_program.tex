@@ -5,6 +5,18 @@ Tato sekce se zabývá návrhem programu pro ovládání samobalančního robota
 \subsection{FreeRTOS}
 FreeRTOS je operační systém běžítí na mikrokontroleru ESP32. Tento operační systém je pro nás výhodný v tom, že nevyhodnocuje data tak, jak přijdou, ale v diskrétích časových intervalech. Není tedy zajištěna pouze správnost dat, ale také jejich správné načasování. Tento přistup se používá pro aplikace, kde je časování nezbytné. Těmito oblastmi mohou být: zdravotnictví, armáda, robotika, či letectví. Jelikož pro samobalančního robota je vyvažování v co nejkratších intervalech klíčové, bude použit tento operační systém.
 
-\subsection{Vícejáddrový problém}
-Vícejádrové procesy mají jeden obrovský problém. Co se stane, když mi bude trvat čtení čísla dva takty procesoru, ale mezitím mi tohle číslo přeppíše druhý procesor? Tato situace není zrovna ideální. Vznikly tedy návěstidla a mutexy. Ve zkratce se jedná o třetí proměnnou, která ukazuje, zda je na proměnné zrovna prováděna nějaká změna. Tímto přístupem se dá chybám spojeným s přepisem dat druhým jádrem předejít.
+\subsection{Vícejádrový problém}
+Vícejádrové procesy mají jeden obrovský problém. Co se stane, když mi bude trvat čtení čísla dva takty procesoru, ale mezitím mi tohle číslo přepíše druhý procesor? Tato situace není zrovna ideální. Vznikly tedy návěstidla a mutexy. Ve zkratce se jedná o třetí proměnnou, která ukazuje, zda je na proměnné zrovna prováděna nějaká změna. Tímto přístupem se dá chybám spojeným s přepisem dat druhým jádrem předejít.
+
+\subsection{Abstrakce}
+Program pro ovládání robota bude obsahovat několik vrstev abstrakce. Nejspodnější je ovládání rychlosti kol. Podle hodnoty z rotačního enkodéru, který se čte pomocí interruptů se bude zaznamenávat celkový počet otočení kol, který potom v kombinaci s časem a PWM signlem vyhodnocuje uzavřená smyčka pro řízení ryhlosti směru motorů.
+\newline
+
+Další vrstvou bude pid kontrolní smyčka. Ta pomocí dat z akcelerometru vyhodnocuje naklonění robota. Do vyhodnocuje s požadovaným nakloněním, které je vstupním parametrem uživatele. Tato smyčka poté předává data předešlé smyčce, která se stará o rychlost otáčení robota. Nad tímto vším se nachází vrstva komunikující s uživatelem.
+\newline
+
+Vedle všeho se nachází podprogram pro logování dat do SD karty. Tato nekritická funkce je volána operačním systém v moment, kdy je volný výpočetní výkon. Tato funkce zaznamenává hodnoty ze všech soonzorů a také hodnoty vnitřních proměnných a ukládá je pro pozdější vyhodnocení.
+\newline
+
+Jelikož ESP32-S3 obshuje dva jádra, můžeme funkce rozdělit. Na jednom jádru běží kritické procesy. Jimi jsou algorytmy řídící balancování robota. Podle potřeby poté na druhém jádru běží funkce nekritické, jimiž je například komunikace s uživatelem. Při přerušení komunikace, či dlouhé prodlevě by se měl robot automaticky zastavit.
 

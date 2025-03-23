@@ -187,7 +187,7 @@
 
 %%% Vysázení seznamu výpisů kódu
 % (vynechejte, pokud máte dva nebo méně výpisů)
-\lstlistoflistings%
+% \lstlistoflistings%
 
 \cleardoublepage\pagestyle{plain}% zapnutí číslování stránek
 \setcounter{page}{1} %resetovaní čítače stránek -- desky do číslování nezahrnujeme
@@ -203,11 +203,12 @@
 \include{text/1_teoreticka_cast/1_vyzkum}
 \include{text/1_teoreticka_cast/2_programy}
 \include{text/1_teoreticka_cast/3_pomucky}
-\include{text/1_teoreticka_cast/4_zakladni_parametry}
 
 
 
 \include{text/2_prakticka_cast/0_prakticka_cast}
+\include{text/2_prakticka_cast/0.5_zakladni_parametry}
+
 \include{text/2_prakticka_cast/1_testovani soucastek}
 \include{text/2_prakticka_cast/2_modely}
 \include{text/2_prakticka_cast/3_PCB}
@@ -226,10 +227,8 @@
 
 %%% Vysázení seznamu příloh
 % (vynechejte, pokud máte dvě nebo méně příloh)
-\listofappendices%
+% \listofappendices%
 
 %%% Vložení souboru 'text/prilohy' s přílohami
 % Obvykle je přítomen alespoň popis co najdeme na přiloženém médiu
-\include{text/prilohy}
-
 \end{document}
