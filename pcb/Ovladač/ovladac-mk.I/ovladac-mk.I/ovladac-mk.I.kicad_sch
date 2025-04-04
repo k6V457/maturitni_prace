@@ -1,0 +1,543 @@
+(kicad_sch
+	(version 20250114)
+	(generator "eeschema")
+	(generator_version "9.0")
+	(uuid "9b22d612-674f-4f5c-bd66-e5b6541dfd20")
+	(paper "A4")
+	(lib_symbols)
+	(no_connect
+		(at 219.71 58.42)
+		(uuid "e41c211a-bfac-4292-855a-ca6803b8597a")
+	)
+	(wire
+		(pts
+			(xy 209.55 83.82) (xy 209.55 109.22)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "088a6e97-f241-4528-b20d-5bbb343b4b54")
+	)
+	(wire
+		(pts
+			(xy 105.41 76.2) (xy 130.81 76.2)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "2859eeb6-70d3-4ce2-bb76-cfd161abb4c5")
+	)
+	(wire
+		(pts
+			(xy 191.77 83.82) (xy 191.77 109.22)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "2e3385cd-ee3c-44e8-bcb6-6798d49a77ad")
+	)
+	(wire
+		(pts
+			(xy 205.74 83.82) (xy 205.74 109.22)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "4e79d83c-9833-4c1d-98be-594f76e170c1")
+	)
+	(wire
+		(pts
+			(xy 196.85 83.82) (xy 196.85 109.22)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "6d3602f1-a542-43b6-92a2-1498e74c6b5f")
+	)
+	(wire
+		(pts
+			(xy 105.41 121.92) (xy 130.81 121.92)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "78ebbcbe-46a1-4105-a24d-b2551edc98fa")
+	)
+	(wire
+		(pts
+			(xy 203.2 83.82) (xy 203.2 109.22)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "a0b907f8-b382-447d-94a0-8d0f9571ad4c")
+	)
+	(wire
+		(pts
+			(xy 212.09 83.82) (xy 212.09 109.22)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "d2238723-fabc-4922-be17-c9e63d47cc93")
+	)
+	(wire
+		(pts
+			(xy 105.41 78.74) (xy 130.81 78.74)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "d9cc79ad-fd73-4b3b-a3e9-6499e8300988")
+	)
+	(wire
+		(pts
+			(xy 189.23 83.82) (xy 189.23 109.22)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "dcbc0163-12bb-4467-8325-be9a059ef82e")
+	)
+	(wire
+		(pts
+			(xy 199.39 83.82) (xy 199.39 109.22)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "e4545fb3-77b3-49bc-add0-056c415b1804")
+	)
+	(wire
+		(pts
+			(xy 175.26 83.82) (xy 175.26 109.22)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "ec37b5c7-ddb0-4aa1-b15d-20ff5701c256")
+	)
+	(wire
+		(pts
+			(xy 172.72 83.82) (xy 172.72 109.22)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "fe4d1dfb-cb08-4764-9309-e44124934ccd")
+	)
+	(sheet
+		(at 130.81 109.22)
+		(size 88.9 38.1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(stroke
+			(width 0.1524)
+			(type solid)
+		)
+		(fill
+			(color 0 0 0 0.0000)
+		)
+		(uuid "91b5499c-3199-4f8b-9d5f-ad1b1a903029")
+		(property "Sheetname" "PSU"
+			(at 130.81 108.5084 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left bottom)
+			)
+		)
+		(property "Sheetfile" "PSU.kicad_sch"
+			(at 130.81 147.9046 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left top)
+			)
+		)
+		(pin "Activate_Motors" input
+			(at 175.26 109.22 90)
+			(uuid "d6c80713-c85a-4825-9d1d-8be1e0b5f7f7")
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+		)
+		(pin "Feedback_1_1" input
+			(at 189.23 109.22 90)
+			(uuid "25a6754f-60e2-42b8-b768-de6b2617f3c0")
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+		)
+		(pin "Feedback_1_2" input
+			(at 196.85 109.22 90)
+			(uuid "0fdecc15-ee5c-45dd-91da-8c8e5ca6ab38")
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+		)
+		(pin "Feedback_2_1" input
+			(at 191.77 109.22 90)
+			(uuid "5c2ff75f-3a0f-4f56-b876-8077dfdf60d6")
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+		)
+		(pin "Feedback_2_2" input
+			(at 199.39 109.22 90)
+			(uuid "e6baee44-1a15-4ea2-9b01-9c22ba7a581f")
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+		)
+		(pin "IN_1_A" input
+			(at 203.2 109.22 90)
+			(uuid "9ddb630b-7180-4d21-a0b8-131287c2f255")
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+		)
+		(pin "IN_1_B" input
+			(at 205.74 109.22 90)
+			(uuid "6e7f5f2a-bb9a-4ae5-9657-61d433b5d9de")
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+		)
+		(pin "IN_2_A" input
+			(at 209.55 109.22 90)
+			(uuid "9cf41ebe-ff5c-42ce-92cc-85dd112e8a9e")
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+		)
+		(pin "IN_2_B" input
+			(at 212.09 109.22 90)
+			(uuid "76ad8a51-e4be-4d88-b39f-f3fee9384cd4")
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+		)
+		(pin "Measure_Voltage" input
+			(at 172.72 109.22 90)
+			(uuid "64ab8fa5-00ea-4a75-95c3-970e0cf955b5")
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+		)
+		(pin "PD_VOUT" input
+			(at 130.81 121.92 180)
+			(uuid "72045cfd-1bc8-4760-a695-65b5f3772888")
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(instances
+			(project "ovladac-mk.I"
+				(path "/9b22d612-674f-4f5c-bd66-e5b6541dfd20"
+					(page "4")
+				)
+			)
+		)
+	)
+	(sheet
+		(at 67.31 58.42)
+		(size 38.1 76.2)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(stroke
+			(width 0.1524)
+			(type solid)
+		)
+		(fill
+			(color 0 0 0 0.0000)
+		)
+		(uuid "ac77f3cc-168b-4d13-b570-49acb754ad9f")
+		(property "Sheetname" "Input"
+			(at 67.31 57.7084 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left bottom)
+			)
+		)
+		(property "Sheetfile" "input.kicad_sch"
+			(at 65.278 97.282 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left top)
+			)
+		)
+		(pin "D+" bidirectional
+			(at 105.41 76.2 0)
+			(uuid "f67c2eec-71eb-4791-978c-acc072f5ef4b")
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+		)
+		(pin "D-" bidirectional
+			(at 105.41 78.74 0)
+			(uuid "5d1829d7-69f3-4408-a501-e56b7d05508b")
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+		)
+		(pin "PD_VOUT" input
+			(at 105.41 121.92 0)
+			(uuid "25eb5411-62c7-4fb0-ab51-da188bd1d254")
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+		)
+		(instances
+			(project "ovladac-mk.I"
+				(path "/9b22d612-674f-4f5c-bd66-e5b6541dfd20"
+					(page "3")
+				)
+			)
+		)
+	)
+	(sheet
+		(at 130.81 33.02)
+		(size 88.9 50.8)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(stroke
+			(width 0.1524)
+			(type solid)
+		)
+		(fill
+			(color 0 0 0 0.0000)
+		)
+		(uuid "c39b2000-002e-4b07-bda2-e0635e40aac1")
+		(property "Sheetname" "ESP32"
+			(at 130.81 32.3084 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left bottom)
+			)
+		)
+		(property "Sheetfile" "esp32.kicad_sch"
+			(at 130.81 84.4046 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left top)
+			)
+		)
+		(pin "Feedback_1_1" input
+			(at 189.23 83.82 270)
+			(uuid "3fa9e4d2-af2a-4ae0-a7f7-4c414f852571")
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(pin "Feedback_2_1" input
+			(at 191.77 83.82 270)
+			(uuid "c2b2145e-b843-4e69-84b2-0ce8b2662dc9")
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(pin "Feedback_1_2" input
+			(at 196.85 83.82 270)
+			(uuid "10bd8c10-86d1-48fa-bde2-9b2f65c7c67d")
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(pin "Feedback_2_2" input
+			(at 199.39 83.82 270)
+			(uuid "94195a48-0ed3-44ec-941f-950f9def7b49")
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(pin "Activate_Motors" output
+			(at 175.26 83.82 270)
+			(uuid "5385592d-25b2-4d74-a8d0-abf96374ef57")
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(pin "Measure_Voltage" input
+			(at 172.72 83.82 270)
+			(uuid "995ae201-2c22-4992-9778-08c1a8ad714d")
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(pin "M_1_A" output
+			(at 203.2 83.82 270)
+			(uuid "22853af7-8726-4d53-9c72-bd3d8dedc8f4")
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(pin "M_1_B" output
+			(at 205.74 83.82 270)
+			(uuid "b2a68902-afab-4fd0-8300-3fc87f5bdfce")
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(pin "M_2_A" output
+			(at 209.55 83.82 270)
+			(uuid "5adcacbd-63d3-467f-9353-5d4b7191c4fd")
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(pin "M_2_B" output
+			(at 212.09 83.82 270)
+			(uuid "4627aab6-46e3-4acd-b23c-8cd4d297b6e9")
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(pin "D+" bidirectional
+			(at 130.81 76.2 180)
+			(uuid "a42cf823-4696-4f2f-b5e1-1025a771b6d0")
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(pin "D-" bidirectional
+			(at 130.81 78.74 180)
+			(uuid "e08f2177-c812-4c97-8512-0eada57ff37e")
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(pin "NeoPixel" output
+			(at 219.71 58.42 0)
+			(uuid "90f1bc99-b13b-47c7-9798-4eaea8dd2020")
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+		)
+		(instances
+			(project "ovladac-mk.I"
+				(path "/9b22d612-674f-4f5c-bd66-e5b6541dfd20"
+					(page "2")
+				)
+			)
+		)
+	)
+	(sheet_instances
+		(path "/"
+			(page "1")
+		)
+	)
+	(embedded_fonts no)
+)

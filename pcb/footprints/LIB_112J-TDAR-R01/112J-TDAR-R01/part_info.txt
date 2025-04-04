@@ -1,0 +1,9 @@
+Manufacturer=ATTEND
+PartNumber=112J-TDAR-R01
+PartCategory=Connector
+PackageCategory=Other
+PinCount=13
+Version=1.3
+Released=2020-08-12 11:57:50
+Downloaded=2025-04-01 07:19:15
+3D=Y
